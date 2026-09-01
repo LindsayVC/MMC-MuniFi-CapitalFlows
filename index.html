@@ -423,15 +423,33 @@ function init(){
   function gc(id,tp){
     if(tp==='s'){
       var node=findNode(id,'s');
+      // Find upstream sources that capitalize this source (reverse srcLinks)
+      var upstreamSrcs=S.filter(function(s){return s.srcLinks&&s.srcLinks.indexOf(id)>=0;}).map(function(s){return s.id;});
       var intIds=node.i.filter(function(x){return x.indexOf('int-')===0;});
       var expanded=intIds.slice();
       intIds.forEach(function(iid){var iNode=findNode(iid,'int');if(iNode&&iNode.i2i){iNode.i2i.forEach(function(t){if(expanded.indexOf(t)<0)expanded.push(t);});}});
       // Build destination set: source's own d array PLUS destinations of connected intermediaries
       var dIds=node.d.slice();
       expanded.forEach(function(iid){var iNode=findNode(iid,'int');if(iNode){iNode.d.forEach(function(did){if(dIds.indexOf(did)<0)dIds.push(did);});}});
-      // Include srcLinks (e.g. MDBs → NDBs capitalization)
+      // Include srcLinks (e.g. MDBs → NDBs capitalization) and their onward flows
       var srcLinkIds=node.srcLinks||[];
-      return{s:[id],en:node.i.filter(function(x){return x.indexOf('en-')===0;}),int:expanded,d:dIds,srcLinks:srcLinkIds,color:node.color};
+      srcLinkIds.forEach(function(lid){
+        var lNode=findNode(lid,'s');
+        if(!lNode)return;
+        // Add NDB's intermediaries to active set
+        lNode.i.filter(function(x){return x.indexOf('int-')===0;}).forEach(function(iid){
+          if(expanded.indexOf(iid)<0)expanded.push(iid);
+        });
+        // Add NDB's destinations to active set
+        (lNode.d||[]).forEach(function(did){if(dIds.indexOf(did)<0)dIds.push(did);});
+        // Also expand NDB intermediaries' destinations
+        lNode.i.filter(function(x){return x.indexOf('int-')===0;}).forEach(function(iid){
+          var iNode=findNode(iid,'int');
+          if(iNode){iNode.d.forEach(function(did){if(dIds.indexOf(did)<0)dIds.push(did);});}
+        });
+      });
+      var allSrcs=[id].concat(upstreamSrcs);
+      return{s:allSrcs,en:node.i.filter(function(x){return x.indexOf('en-')===0;}),int:expanded,d:dIds,srcLinks:srcLinkIds,upstream:upstreamSrcs,color:node.color};
     }
     if(tp==='en'){
       var node=findNode(id,'en');
@@ -534,28 +552,40 @@ function init(){
     var ctx=cv.getContext('2d');
     ctx.clearRect(0,0,cv.width,cv.height);
 
-    // Draw dashed lines from source to srcLink sources (e.g. MDB → NDB capitalization)
+    // Draw dashed lines for MDB → NDB capitalization (both directions)
+    // Forward: MDB clicked → draw line to NDB
     if(c.srcLinks&&c.srcLinks.length){
       var sNode=findNode(c.s[0],'s');
       var b1=ncbox(c.s[0]);
       if(b1&&sNode){
         c.srcLinks.forEach(function(linkedId){
           var b2=ncbox(linkedId);if(!b2)return;
-          // Draw horizontal dashed line within Source tier
           ctx.beginPath();ctx.moveTo(b1.cx,b1.cy);ctx.lineTo(b2.cx,b2.cy);
           ctx.strokeStyle=sNode.color;ctx.lineWidth=2;ctx.globalAlpha=0.5;
           ctx.setLineDash([6,4]);ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;
-          // Arrowhead pointing toward NDB
-          var angle=Math.atan2(b2.cy-b1.cy,b2.cx-b1.cx);
-          var hs=9;
-          ctx.beginPath();
-          ctx.moveTo(b2.cx,b2.cy);
+          var angle=Math.atan2(b2.cy-b1.cy,b2.cx-b1.cx);var hs=9;
+          ctx.beginPath();ctx.moveTo(b2.cx,b2.cy);
           ctx.lineTo(b2.cx-hs*Math.cos(angle-0.4),b2.cy-hs*Math.sin(angle-0.4));
           ctx.lineTo(b2.cx-hs*Math.cos(angle+0.4),b2.cy-hs*Math.sin(angle+0.4));
-          ctx.closePath();
-          ctx.fillStyle=sNode.color;ctx.globalAlpha=0.6;ctx.fill();ctx.globalAlpha=1;
+          ctx.closePath();ctx.fillStyle=sNode.color;ctx.globalAlpha=0.6;ctx.fill();ctx.globalAlpha=1;
         });
       }
+    }
+    // Reverse: NDB clicked → draw lines FROM each upstream MDB to NDB
+    if(c.upstream&&c.upstream.length){
+      var ndbBox=ncbox(act);
+      c.upstream.forEach(function(upId){
+        var upNode=findNode(upId,'s');
+        var b1=ncbox(upId);if(!b1||!ndbBox)return;
+        ctx.beginPath();ctx.moveTo(b1.cx,b1.cy);ctx.lineTo(ndbBox.cx,ndbBox.cy);
+        ctx.strokeStyle=upNode.color;ctx.lineWidth=2;ctx.globalAlpha=0.5;
+        ctx.setLineDash([6,4]);ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;
+        var angle=Math.atan2(ndbBox.cy-b1.cy,ndbBox.cx-b1.cx);var hs=9;
+        ctx.beginPath();ctx.moveTo(ndbBox.cx,ndbBox.cy);
+        ctx.lineTo(ndbBox.cx-hs*Math.cos(angle-0.4),ndbBox.cy-hs*Math.sin(angle-0.4));
+        ctx.lineTo(ndbBox.cx-hs*Math.cos(angle+0.4),ndbBox.cy-hs*Math.sin(angle+0.4));
+        ctx.closePath();ctx.fillStyle=upNode.color;ctx.globalAlpha=0.6;ctx.fill();ctx.globalAlpha=1;
+      });
     }
 
     c.s.forEach(function(sid){
