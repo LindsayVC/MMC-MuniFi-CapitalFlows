@@ -149,10 +149,9 @@ var S=[
 
  {id:'s7',l:'Philanthropy – Collaborative Funds',color:COLORS.s7,
   desc:'Pooled philanthropic vehicles aggregating multiple donors. Deploy more flexibly than bilaterals; rarely reach municipal level directly.',
-  i:['int-natgov','int-ff-sub','int-ff-mig'],d:['d-t1','d-t2','d-t3','d-t4'],
+  i:['int-natgov','int-ff-sub','int-ff-mig'],d:['d-t1','d-t2','d-t3'],
   aum:[],sub:[
-   n('ClimateWorks Foundation','Philanthropic collaborative funding climate adaptation and resilience. A&R Fund pools $50M+ from ClimateWorks and partner foundations; grants $500K-$5M via RFP cycles. ARC funder collaborative (70+ foundations) coordinates adaptation strategy.','https://www.climateworks.org',[{t:'A&R Fund pool',v:'$50M+',y:2024},{t:'Grant range',v:'$500K-$5M',y:2024}],'Multiple philanthropic donors','Engage on climate-migration nexus programming within urban resilience grants.',null,['Climate migration'],{url:'https://www.climateworks.org/report/adaptation-resilience-fund/',label:'ClimateWorks A&R Fund Report 2024'}),
-   n('Bloomberg Philanthropies – Mayors Challenge','Direct city grants ($1M-$5M prizes) for innovative urban solutions. Cities design and implement projects.','https://www.bloomberg.org',[{t:'Per prize',v:'$1M-$5M',y:2023}],'Bloomberg Philanthropies','Engage on Mayors Challenge alignment with migration-inclusive urban innovation.',null,['Economic inclusion','Reception'],{url:'https://mayorschallenge.bloomberg.org',label:'Bloomberg Mayors Challenge (mayorschallenge.bloomberg.org)'})
+   n('ClimateWorks A&R Fund','Pooled philanthropic vehicle aggregating 70+ foundations through the Adaptation and Resilience Collaborative (ARC). Grants $500K-$5M via RFP cycles for locally-led adaptation in LMICs.','https://www.climateworks.org',[{t:'A&R Fund pool',v:'$50M+',y:2024},{t:'Grant range',v:'$500K-$5M',y:2024}],'Multiple philanthropic foundations (ARC collaborative)','Engage on climate-migration nexus programming within urban resilience grants.',null,['Climate migration'],{url:'https://www.climateworks.org/report/adaptation-resilience-fund/',label:'ClimateWorks A&R Fund Report 2024'}),
   ]},
 
  {id:'s8',l:'Philanthropy – UHNWI',color:COLORS.s8,
@@ -161,10 +160,28 @@ var S=[
   aum:[],sub:[]},
 
  {id:'s9',l:'Philanthropy – Family Offices',color:COLORS.s9,
-  desc:'Family office philanthropic and impact-oriented capital. Tends to work through trusted intermediaries.',
-  i:['int-ff-clim'],d:['d-t2','d-t3'],
+  desc:'Family office philanthropic and impact-oriented capital. Tends to work through trusted intermediaries. Active across climate, refugee/migration, health, gender, and economic inclusion themes.',
+  i:['int-ff-clim','int-ff-sub','int-ff-mig','int-ff-frontier'],d:['d-t2','d-t3'],
   aum:[],sub:[]},
 
+ {id:'s10f',l:'Philanthropy – Foundations',color:'#7A3B69',
+  desc:'Major independent grantmaking foundations deploying philanthropic capital across health, education, gender, climate, and refugee/migration themes. Structurally distinct from UHNWI and Family Offices in having professional staff, independent boards, and systematic grantmaking processes. Several are direct funders of MMC programs.',
+  i:['en-firstloss','int-ff-sub','int-ff-clim','int-ff-mig','int-ff-frontier','int-natgov'],d:['d-t2','d-t3'],
+  aum:[{t:'Combined annual grantmaking (selected foundations)',v:'$5B+',y:2025}],
+  sub:[
+   n('Gates Foundation','World\'s largest private charitable foundation. Funds Global Fund (Health), GPE (Children and caregivers/Education), and Lives and Livelihoods Fund. Annual grantmaking ~$7B. Health, poverty, and gender primary mandates.','https://www.gatesfoundation.org',[{t:'Annual grantmaking',v:'~$7B',y:2024}],'Gates family endowment','Engage on Global Fund migration inclusion criteria and GPE refugee child enrollment mandates. Gates is a direct funder of two Frontier Issues facilities.',null,['Health','Children and caregivers','Gender equality'],{url:'https://www.gatesfoundation.org/about/financials',label:'Gates Foundation Financials 2024'}),
+   n('Open Society Foundations (OSF)','Soros-founded network of foundations; direct funder of MMC Global Cities Fund. Explicit refugee integration, economic inclusion, and pathways mandates across 120+ countries.','https://www.opensocietyfoundations.org',[{t:'Annual grantmaking',v:'~$1.5B',y:2024}],'George Soros / OSF endowment','Direct relationship given OSF\'s MMC GCF funding. Engage on expanded refugee/migration finance programming and UMFF positioning.',null,['Economic inclusion','Reception','Pathways'],{url:'https://www.opensocietyfoundations.org/about/expenditures',label:'OSF Expenditures 2024'}),
+   n('Conrad N. Hilton Foundation','Direct funder of MMC Global Cities Fund. Focuses on homelessness, safe water, and international humanitarian response including refugee populations.','https://www.hiltonfoundation.org',[{t:'Annual grantmaking',v:'~$150M',y:2024}],'Hilton family endowment','Direct relationship given Hilton\'s MMC GCF funding. Engage on expanded refugee/migration programming and humanitarian-to-development nexus finance.',null,['Reception','Housing','Economic inclusion'],{url:'https://www.hiltonfoundation.org/grants/',label:'Hilton Foundation Grants'}),
+   n('IKEA Foundation','Direct funder of MMC Global Cities Fund and RIF (Refugee Investment Facility). Climate, refugee livelihoods, and economic inclusion primary mandates. One of the most active foundation funders in refugee-adjacent spaces.','https://www.ikeafoundation.org',[{t:'Annual grantmaking',v:'~$200M',y:2024}],'Ingka Group (IKEA) profits','Direct relationship given IKEA Foundation\'s MMC GCF and RIF funding. Priority partner for expanded UMFF positioning.',null,['Economic inclusion','Reception','Climate migration'],{url:'https://www.ikeafoundation.org/our-grants/',label:'IKEA Foundation Grants'}),
+   n('Bloomberg Philanthropies','Michael Bloomberg\'s foundation. Mayors Challenge ($1M-$5M prizes) provides direct grants to city governments for innovative urban solutions — migration-inclusive programming has featured in prior cycles.','https://www.bloomberg.org',[{t:'Annual grantmaking',v:'~$1B',y:2024}],'Bloomberg family endowment','Engage on Mayors Challenge alignment with migration-inclusive urban innovation. Bloomberg is a direct city-facing funder — one of the few foundations that grants to municipal governments directly.',null,['Economic inclusion','Reception','Municipal finance for migrants and refugees'],{url:'https://mayorschallenge.bloomberg.org',label:'Bloomberg Mayors Challenge (mayorschallenge.bloomberg.org)'}),
+   n('Novo Nordisk Foundation','Danish science and innovation foundation. Co-funder (with Wellcome and Volkswagen Foundation) of the Transdisciplinary Mobility and Global Health joint call — directly covering migrants displaced by conflict, disasters, and climate change. Also funds RIF (Refugee Investment Facility).','https://novonordiskfonden.dk',[{t:'Annual grantmaking',v:'~DKK 5B (~$700M)',y:2024}],'Novo Nordisk Group profits','Engage on mobility and global health joint call and RIF funding relationship. Novo Nordisk is an increasingly active foundation in refugee-adjacent health and economic inclusion spaces.',null,['Health','Economic inclusion','Climate migration'],{url:'https://novonordiskfonden.dk/en/grant/transdisciplinary-approaches-to-mobility-and-global-health-joint-call-2024/',label:'Novo Nordisk Mobility and Global Health Call 2024'}),
+   n('Bezos Earth Fund','$10B commitment from Jeff Bezos for climate action. Funds GEAPP (energy access) and climate transition in developing markets. Climate-migration nexus increasingly explicit.','https://www.bezosearthfund.org',[{t:'Total commitment',v:'$10B',y:'2020 horizon'}],'Jeff Bezos personal commitment','Engage on climate-migration framing within GEAPP and developing-market climate transition programming.',null,['Climate migration'],{url:'https://www.bezosearthfund.org/our-grants',label:'Bezos Earth Fund Grants'}),
+   n('Robert Bosch Stiftung','One of Europe\'s largest foundations; explicit migration mandate. Supports GCCM C-CAF, references MMC Global Cities Fund, partners with IOM on labour migration (Amplifying Migrant Voices, 2025), and is part of EPIM (European Philanthropic Initiative for Migration — 25 foundations). Moving Cities platform supports municipal refugee inclusion.','https://www.bosch-stiftung.de',[{t:'Annual grantmaking',v:'~EUR 200M',y:2024}],'Robert Bosch GmbH profits','Strong alignment — engage on GCCM C-CAF co-funding, EPIM coordination, and IOM-Bosch labour migration partnership. Moving Cities is directly relevant to MMC member cities.',null,['Reception','Pathways','Economic inclusion','Climate migration'],{url:'https://www.bosch-stiftung.de/en/topics/migration',label:'Bosch Stiftung Migration Programme'}),
+   n('CIFF (Children\'s Investment Fund Foundation)','£5.2B assets; $1.45B annual commitments (2025, first year exceeding $1B). Grantmaking for Cities program focuses on urban energy efficiency and has partnered directly with subnational governments including the Rajasthan Government and African Development Bank. Health, nutrition, gender, and climate primary mandates.','https://ciff.org',[{t:'Annual charitable commitments',v:'$1.45B',y:2025}],'Sir Chris Hohn / CIFF endowment','Engage on Grantmaking for Cities program — CIFF has documented subnational government partnerships, making it one of the few foundations with a direct city-level footprint. Also a gateway to joint health/nutrition programming for displaced children.',null,['Children and caregivers','Health','Gender equality','Climate migration'],{url:'https://ciff.org/what-we-fund/',label:'CIFF What We Fund 2025'}),
+   n('Wellcome Trust','£37.6B investment portfolio; £1.9B charitable expenditure 2024/25. Co-funder (with Novo Nordisk and Volkswagen Foundation) of Transdisciplinary Mobility and Global Health joint call — directly covering health of migrants and displaced persons. Three strategic priorities: Mental Health, Infectious Disease, and Climate and Health.','https://wellcome.org',[{t:'Charitable expenditure',v:'£1.9B',y:'2024/25'},{t:'Investment portfolio',v:'£37.6B',y:2025}],'Wellcome Trust endowment','Engage on Mobility and Global Health joint call and Climate and Health priority — both intersect directly with MMC\'s displacement and reception frontier themes.',null,['Health','Climate migration','Reception'],{url:'https://wellcome.org/research-funding/funding-portfolio/funding-data-2024',label:'Wellcome Grant Funding Data 2024/25'}),
+   n('Rockefeller Foundation','Innovative Finance team deploys program-related investments and first-loss capital in blended structures; Zero Gap Fund has mobilized over $1B from modest catalytic capital. Also a direct funder of ClimateWorks A&R Fund and urban resilience programming.','https://www.rockefellerfoundation.org',[{t:'Annual grants',v:'~$300M',y:2024}],'Rockefeller Foundation endowment','Engage as co-designer of a displacement-specific catalytic capital vehicle — Rockefeller\'s Innovative Finance team is the right entry point. Also see First-Loss Capital (Enabler) for the blended finance connection.',null,['Economic inclusion','Climate migration','Municipal finance for migrants and refugees'],{url:'https://www.rockefellerfoundation.org/report/innovative-finance/',label:'Rockefeller Foundation Innovative Finance'}),
+   n('MacArthur Foundation','Pioneer in catalytic and first-loss capital via the Catalytic Capital Consortium (CCC) co-founded with Omidyar and Rockefeller. $150M catalytic capital commitment. Independent grantmaking foundation with global development and climate mandates.','https://www.macfound.org',[{t:'Catalytic capital commitment (CCC)',v:'$150M',y:2019},{t:'Annual grantmaking',v:'~$300M',y:2024}],'MacArthur Foundation endowment','Engage CCC on developing a displacement-specific catalytic capital vehicle modeled on existing CCC structures. Also see First-Loss Capital (Enabler) for the blended finance connection.',null,['Economic inclusion','Municipal finance for migrants and refugees'],{url:'https://www.macfound.org/programs/article/catalytic-capital-consortium/',label:'MacArthur Foundation / CCC'})
+  ]},
  {id:'s10',l:'Impact Investors',color:COLORS.s10,
   desc:'Funds and networks seeking measurable social and environmental impact alongside financial return.',
   i:['int-ff-clim','int-ff-mig','int-ff-sub'],d:['d-corp','d-t2','d-t3'],
@@ -188,7 +205,7 @@ var S=[
 
  {id:'s12',l:'Bilateral – Donors',color:COLORS.s12,
   desc:'ODA channeled to programming, primarily grant-based. Significant donor retrenchment underway in 2025–2026. Bilateral donors do not systematically fund Tier One (HIC creditworthy) municipalities directly; EU AMIF is an exception for EU member state cities.',
-  i:['int-un-pass','int-natgov'],d:['d-t2','d-t3','d-t4'],
+  i:['int-un-pass','int-natgov','int-ff-frontier','en-ta'],d:['d-t2','d-t3'],
   aum:[{t:'Total ODA (DAC donors, excl. US)',v:'~$170B',y:2023}],
   sub:[
    n('FCDO (UK)','Strong humanitarian and displacement portfolio. ODA budget reduced from 0.5% to 0.3% of GNI by 2027.','https://www.gov.uk',[{t:'Annual ODA (2024)',v:'GBP 14B',y:2024}],'UK government','Engage early given budget pressure — advocate for displacement programming protection.','31% programme reduction by 2027.',['Reception','Health'],{url:'https://www.gov.uk/government/collections/statistics-on-international-development',label:'UK Statistics on International Development 2024'}),
@@ -204,7 +221,7 @@ var S=[
 
  {id:'s13',l:'Bilateral – Innovative Finance',color:COLORS.s13,
   desc:'Bilateral donor blended and innovative finance windows using ODA to de-risk and leverage private capital at scale.',
-  i:['int-ff-sub','int-ff-clim','int-ff-mig','int-natgov'],d:['d-t2','d-t3','d-corp'],
+  i:['int-ff-sub','int-ff-clim','int-ff-mig','int-ff-frontier','int-natgov'],d:['d-t2','d-t3','d-corp'],
   aum:[],
   sub:[
    n('FCDO Impact Programme','UK blended finance facility.','https://www.gov.uk',[{t:'Programme size (original)',v:'GBP 735M',y:'2021-2026'}],'UK government','Verify current status given FCDO 31% ODA cut before committing engagement resources.','Status uncertain given broader FCDO budget cuts.',{url:'https://www.gov.uk/guidance/impact-programme',label:'FCDO Impact Programme'}),
@@ -224,7 +241,7 @@ var S=[
 
  {id:'s15',l:'Parametric Insurance',color:COLORS.s15,
   desc:'Risk pools paying out directly to governments after a triggering disaster event. A direct capital source providing fiscal liquidity — not a credit enhancer for third-party lenders.',
-  i:['int-natgov'],d:['d-t3','d-t4'],
+  i:['int-natgov'],d:['d-t3'],
   aum:[],
   sub:[
    n('CCRIF SPC','Caribbean Catastrophe Risk Insurance Facility; parametric payouts for Caribbean and Central American governments.','https://www.ccrif.org',[{t:'Claims paid to date',v:'$280M+',y:2023}],'CARICOM governments, donor capitalization','Engage CARICOM member cities on post-disaster liquidity access pathways.',null,['Climate migration','Reception'],{url:'https://www.ccrif.org/content/annual-report',label:'CCRIF Annual Report 2024'}),
@@ -256,8 +273,8 @@ var EN=[
   ]},
 
  {id:'en-ta',l:'Technical Assistance',color:'#854F0B',
-  desc:'Build capacity, project pipelines, and creditworthiness without deploying capital directly.',
-  d:['d-t2','d-t3'],aum:[],
+  desc:'Build capacity, project pipelines, and creditworthiness without deploying capital directly. TA flows to municipalities directly to build city-level capacity, and to national governments to strengthen the intergovernmental frameworks — transfer systems, borrowing legislation, credit rating infrastructure — that channel finance to cities.',
+  d:['d-t2','d-t3'],intLinks:['int-natgov'],aum:[],
   sub_:[
    n('ADB CDIA','Cities Development Initiative for Asia. TA and investment preparation for Asian cities.','https://cdia.asia',[{t:'Portfolio facilitated',v:'$3.2B+',y:2023}],'ADB, bilateral donors','Direct partnership for MMC Asia-Pacific member cities seeking project-prep support.',{url:'https://www.adb.org/annual-report/editions/2024',label:'ADB Annual Report 2024 (adb.org)'}),
    n('World Bank City Creditworthiness Initiative (CCI)','Hands-on support helping cities strengthen financial performance and access financing, including City Creditworthiness Academies and the Local Government Borrowing Database.','https://www.worldbank.org',[{t:'Cities supported',v:'200+',y:2023}],'World Bank Group','High-value target — explore whether MMC member cities can access CCI Academies directly.',{url:'https://www.citycred.org',label:'City Creditworthiness Initiative (citycred.org)'}),
@@ -273,7 +290,7 @@ var EN=[
   desc:'Capital positioned to absorb downside risk first, unlocking commercial co-investment above it in a blended structure.',
   d:['d-t2','d-t3'],aum:[],
   sub_:[
-   n('MacArthur Foundation / CCC','Pioneer in catalytic capital; co-leads the Catalytic Capital Consortium with Omidyar and Rockefeller.','https://www.macfound.org',[{t:'Catalytic capital commitment',v:'$150M',y:2019}],'MacArthur, Omidyar Network, Rockefeller Foundation','Engage CCC on developing a displacement-specific catalytic capital vehicle.',{url:'https://www.macfound.org/programs/article/catalytic-capital-consortium/',label:'MacArthur Foundation / CCC'}),
+   n('MacArthur Foundation / CCC','Pioneer in catalytic capital; co-leads the Catalytic Capital Consortium (CCC) with Omidyar and Rockefeller. The CCC positions first-loss capital in blended structures to de-risk commercial co-investment. MacArthur is also listed as a Source under Philanthropy – Foundations.','https://www.macfound.org',[{t:'Catalytic capital commitment',v:'$150M',y:2019}],'MacArthur, Omidyar Network, Rockefeller Foundation','Engage via CCC on a displacement-specific catalytic capital vehicle. See also Philanthropy – Foundations for MacArthur\'s broader grantmaking role.',{url:'https://www.macfound.org/programs/article/catalytic-capital-consortium/',label:'MacArthur Foundation / CCC'}),
    n('Rockefeller Foundation – Innovative Finance','Deploys innovative finance instruments including guarantees and outcomes-based finance for urban resilience and climate.','https://www.rockefellerfoundation.org',[{t:'Annual grants',v:'~$300M',y:2023}],'Rockefeller Foundation endowment','Priority partner for first-loss structuring conversations given existing urban resilience work.',null,['Climate migration','Economic inclusion'],{url:'https://www.rockefellerfoundation.org/report/innovative-finance/',label:'Rockefeller Foundation Innovative Finance'})
   ]}
 ];
@@ -403,7 +420,11 @@ function init(){
     if(tp==='en'){
       var node=findNode(id,'en');
       var sIds=S.filter(function(s){return s.i.indexOf(id)>=0;}).map(function(s){return s.id;});
-      return{s:sIds,en:[id],int:[],d:node.d,color:node.color};
+      var intIds=[];
+      if(node.intLinks){node.intLinks.forEach(function(iid){if(intIds.indexOf(iid)<0)intIds.push(iid);});}
+      var dIds=node.d.slice();
+      intIds.forEach(function(iid){var iNode=findNode(iid,'int');if(iNode){iNode.d.forEach(function(did){if(dIds.indexOf(did)<0)dIds.push(did);});}});
+      return{s:sIds,en:[id],int:intIds,d:dIds,color:node.color};
     }
     if(tp==='int'){
       var node=findNode(id,'int');
@@ -530,6 +551,17 @@ function init(){
         var b2=ncbox(did);if(!b2)return;
         routeCurve(ctx,b1,b2,eNode.color,false);
       });
+      // Draw dashed line from TA to National Governments (system-level TA)
+      if(eNode.intLinks){
+        eNode.intLinks.forEach(function(iid){
+          var b2=ncbox(iid);if(!b2)return;
+          var midY=Math.min(b1.top,b2.top)-22;
+          ctx.beginPath();ctx.moveTo(b1.cx,b1.top);
+          ctx.bezierCurveTo(b1.cx,midY,b2.cx,midY,b2.cx,b2.top);
+          ctx.strokeStyle=eNode.color;ctx.lineWidth=2.5;ctx.globalAlpha=0.55;
+          ctx.setLineDash([6,4]);ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;
+        });
+      }
     });
 
     c.int.forEach(function(iid){
@@ -591,6 +623,10 @@ function init(){
     if(node.i2i&&node.i2i.length){
       var targets=node.i2i.map(function(tid){var t=I.find(function(x){return x.id===tid;});return t?t.l:tid;}).join(', ');
       h+='<div class="fieldlabel">Channels funds through &#8674;</div><div class="row"><span class="chip">'+targets+'</span></div>';
+    }
+    if(node.intLinks&&node.intLinks.length){
+      var targets=node.intLinks.map(function(tid){var t=I.find(function(x){return x.id===tid;});return t?t.l:tid;}).join(', ');
+      h+='<div class="fieldlabel">Also supports (system-level TA) &#8674;</div><div class="row"><span class="chip">'+targets+'</span></div>';
     }
     var upstreamI=I.filter(function(other){return other.i2i&&other.i2i.indexOf(node.id)>=0;});
     if(upstreamI.length){
