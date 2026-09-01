@@ -502,7 +502,9 @@ function init(){
       sNode.i.forEach(function(target){
         var tp=target.indexOf('en-')===0?'en':'int';
         if(tp==='en'&&c.en.indexOf(target)<0)return;
+        // Only draw to intermediaries the source DIRECTLY connects to — not i2i-expanded ones
         if(tp==='int'&&c.int.indexOf(target)<0)return;
+        if(tp==='int'&&sNode.i.indexOf(target)<0)return;
         var b2=ncbox(target);if(!b2)return;
         routeCurve(ctx,b1,b2,col,false);
       });
