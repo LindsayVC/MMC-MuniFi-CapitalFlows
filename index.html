@@ -147,12 +147,7 @@ var S=[
    n('DFC (US)','US bilateral DFI. Reauthorized through 2031 with expanded $205B contingent liability cap after Oct 2025 lapse. FY2025 activity dropped sharply from FY2024.','https://www.dfc.gov',[{t:'FY2025 new commitments',v:'$3.6B',y:2025},{t:'Total exposure',v:'$43.4B',y:2025}],'US government','Monitor post-reauthorization strategy; advocate for displacement-relevant country eligibility.',null,'FY2025 activity dropped from $12.1B in FY2024. New income-threshold eligibility rules apply.',{url:'https://www.dfc.gov/about/reports-and-data/annual-reports',label:'DFC Annual Report FY2025'})
   ]},
 
- {id:'s7',l:'Philanthropy – Collaborative Funds',color:COLORS.s7,
-  desc:'Pooled philanthropic vehicles aggregating multiple donors. Deploy more flexibly than bilaterals; rarely reach municipal level directly.',
-  i:['int-natgov','int-ff-sub','int-ff-mig'],d:['d-t1','d-t2','d-t3'],
-  aum:[],sub:[
-   n('ClimateWorks A&R Fund','Pooled philanthropic vehicle aggregating 70+ foundations through the Adaptation and Resilience Collaborative (ARC). Grants $500K-$5M via RFP cycles for locally-led adaptation in LMICs.','https://www.climateworks.org',[{t:'A&R Fund pool',v:'$50M+',y:2024},{t:'Grant range',v:'$500K-$5M',y:2024}],'Multiple philanthropic foundations (ARC collaborative)','Engage on climate-migration nexus programming within urban resilience grants.',null,['Climate migration'],{url:'https://www.climateworks.org/report/adaptation-resilience-fund/',label:'ClimateWorks A&R Fund Report 2024'}),
-  ]},
+
 
  {id:'s8',l:'Philanthropy – UHNWI',color:COLORS.s8,
   desc:'Ultra-high-net-worth individual philanthropic giving. Increasingly active in climate-migration nexus.',
@@ -161,12 +156,12 @@ var S=[
 
  {id:'s9',l:'Philanthropy – Family Offices',color:COLORS.s9,
   desc:'Family office philanthropic and impact-oriented capital. Tends to work through trusted intermediaries. Active across climate, refugee/migration, health, gender, and economic inclusion themes.',
-  i:['int-ff-clim','int-ff-sub','int-ff-mig','int-ff-frontier'],d:['d-t2','d-t3'],
+  i:['int-ff-clim','int-ff-sub','int-ff-mig','int-ff-frontier','int-ff-collab'],d:['d-t2','d-t3'],
   aum:[],sub:[]},
 
  {id:'s10f',l:'Philanthropy – Foundations',color:'#7A3B69',
   desc:'Major independent grantmaking foundations deploying philanthropic capital across health, education, gender, climate, and refugee/migration themes. Structurally distinct from UHNWI and Family Offices in having professional staff, independent boards, and systematic grantmaking processes. Several are direct funders of MMC programs.',
-  i:['en-firstloss','int-ff-sub','int-ff-clim','int-ff-mig','int-ff-frontier','int-natgov'],d:['d-t2','d-t3'],
+  i:['en-firstloss','int-ff-sub','int-ff-clim','int-ff-mig','int-ff-frontier','int-ff-collab','int-natgov'],d:['d-t2','d-t3'],
   aum:[{t:'Combined annual grantmaking (selected foundations)',v:'$5B+',y:2025}],
   sub:[
    n('Gates Foundation','World\'s largest private charitable foundation. Funds Global Fund (Health), GPE (Children and caregivers/Education), and Lives and Livelihoods Fund. Annual grantmaking ~$7B. Health, poverty, and gender primary mandates.','https://www.gatesfoundation.org',[{t:'Annual grantmaking',v:'~$7B',y:2024}],'Gates family endowment','Engage on Global Fund migration inclusion criteria and GPE refugee child enrollment mandates. Gates is a direct funder of two Frontier Issues facilities.',null,['Health','Children and caregivers','Gender equality'],{url:'https://www.gatesfoundation.org/about/financials',label:'Gates Foundation Financials 2024'}),
@@ -205,7 +200,7 @@ var S=[
 
  {id:'s12',l:'Bilateral – Donors',color:COLORS.s12,
   desc:'ODA channeled to programming, primarily grant-based. Significant donor retrenchment underway in 2025–2026. Bilateral donors do not systematically fund Tier One (HIC creditworthy) municipalities directly; EU AMIF is an exception for EU member state cities.',
-  i:['int-un-pass','int-natgov','int-ff-frontier','en-ta'],d:['d-t2','d-t3'],
+  i:['int-un-pass','int-natgov','int-ff-frontier','int-ff-collab','en-ta'],d:['d-t2','d-t3'],
   aum:[{t:'Total ODA (DAC donors, excl. US)',v:'~$170B',y:2023}],
   sub:[
    n('FCDO (UK)','Strong humanitarian and displacement portfolio. ODA budget reduced from 0.5% to 0.3% of GNI by 2027.','https://www.gov.uk',[{t:'Annual ODA (2024)',v:'GBP 14B',y:2024}],'UK government','Engage early given budget pressure — advocate for displacement programming protection.','31% programme reduction by 2027.',['Reception','Health'],{url:'https://www.gov.uk/government/collections/statistics-on-international-development',label:'UK Statistics on International Development 2024'}),
@@ -346,6 +341,13 @@ var I=[
    n('CREWS (Climate Risk and Early Warning Systems)','Multi-donor initiative strengthening early warning systems in LDCs and SIDS — countries and cities facing the highest climate displacement risk. Announced COP21; targets USD 100M.','https://www.crews-initiative.org',[{t:'Target',v:'$100M',y:'ongoing'}],'France, Luxembourg, Germany, Australia, others','Engage on early warning system integration with climate displacement planning in vulnerable member cities.',null,['Climate migration','Reception'],{url:'https://www.crews-initiative.org/en/about',label:'CREWS Initiative About'})
   ]},
 
+ {id:'int-ff-collab',l:'Philanthropy – Collaborative Funds',color:'#D85A30',
+  desc:'Pooled philanthropic vehicles that aggregate capital from multiple foundation donors and redeploy it to grantees and implementing partners. Capital originates with foundations, bilateral donors, and family offices upstream — these vehicles are the structuring and deployment mechanism, not the capital source.',
+  d:['d-t1','d-t2','d-t3'],i2i:['int-natgov'],aum:[],
+  sub:[
+   n('ClimateWorks A&R Fund','Pooled grantmaking vehicle aggregating 70+ foundations through the Adaptation and Resilience Collaborative (ARC). Grants $500K-$5M via RFP cycles for locally-led adaptation in LMICs. First wave: $9.3M to 12 organizations for urban extreme heat resilience in South Asia, Southeast Asia, and Sub-Saharan Africa.','https://www.climateworks.org',[{t:'A&R Fund pool',v:'$50M+',y:2024},{t:'Grant range',v:'$500K-$5M',y:2024}],'Bloomberg, Hewlett, Packard, CIFF, and 70+ ARC member foundations','Engage on climate-migration nexus programming within urban resilience grants. ARC has already identified climate displacement and migration as a priority learning topic.',null,['Climate migration'],{url:'https://www.climateworks.org/report/adaptation-resilience-fund/',label:'ClimateWorks A&R Fund Report 2024'}),
+   n('Bloomberg Mayors Challenge','Competitive city grant program ($1M-$5M prizes) for innovative urban solutions. Requires a functioning mayoral government as applicant. Migration-inclusive programming has featured in prior cycles. One of the few philanthropic vehicles that grants directly to city governments without a national intermediary.','https://mayorschallenge.bloomberg.org',[{t:'Per prize',v:'$1M-$5M',y:2024}],'Bloomberg Philanthropies (Michael Bloomberg)','Engage on Mayors Challenge alignment with migration-inclusive urban innovation. Direct city access makes this one of the most relevant philanthropic entry points on the map.',null,['Economic inclusion','Reception','Municipal finance for migrants and refugees'],{url:'https://mayorschallenge.bloomberg.org',label:'Bloomberg Mayors Challenge'})
+  ]},
  {id:'int-natgov',l:'National Governments',color:'#854F0B',
   desc:'Primary conduit for MDB sovereign lending to cities via intergovernmental transfers. Also receives funding from other intermediaries before passing to subnational actors. Variable reliability; routing depends on capital type.',
   d:['d-t1','d-t2','d-t3','d-t4','d-corp'],aum:[],
