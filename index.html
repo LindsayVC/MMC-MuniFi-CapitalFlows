@@ -101,7 +101,7 @@ var S=[
 
  {id:'s3',l:'MDB – Direct',color:COLORS.s3,
   desc:'Can lend directly to creditworthy subnational governments without a sovereign guarantee, bypassing national pass-through.',
-  i:['en-guar','en-ta','int-ff-sub'],d:['d-corp','d-t2','d-t3'],
+  i:['en-ta','int-ff-sub'],d:['d-corp','d-t2','d-t3'],
   aum:[{t:'CAF annual approvals',v:'$13.5B',y:2023},{t:'EBRD annual investment (record)',v:'€16.8B',y:2025},{t:'IDB Sub-Sovereign Finance Program',v:'Up to $1B',y:2025}],
   sub:[
    n('IDB','Launched $1B Sub-Sovereign Finance Program in 2025 enabling direct lending without sovereign guarantees — pilot stage modeled on EBRD (first transaction: Cartagena, Colombia, Dec 2025). Also administers the IDB Grant Facility for Migration (GRF): up to $100M in grants blended into IDB investment loans at up to 20% per operation, for eligible LAC countries meeting 0.5% migration population threshold.','https://www.iadb.org',[{t:'Sub-Sovereign Finance Program',v:'Up to $1B',y:2025},{t:'IDB GRF (Migration Grant Facility)',v:'Up to $100M',y:2025}],'48 member countries','Flagship engagement: IDB for Cities and Regions pilot — MMC LAC members should seek inclusion in next cohort. Separately, advocate for national governments to structure IDB investment loans that include city-level migrant/refugee components eligible for GRF grant blending.',null,['Reception','Economic inclusion','Housing']),
@@ -127,7 +127,7 @@ var S=[
 
  {id:'s5',l:'DFI – Global',color:COLORS.s5,
   desc:'IFC is the World Bank Group\'s private sector arm. Can lend directly to creditworthy subnational and municipal-adjacent entities including municipal corporations. Also deploys first-loss tranches in blended structures.',
-  i:['en-guar','int-ff-clim'],d:['d-corp','d-t2'],
+  i:['int-ff-clim'],d:['d-corp','d-t2'],
   aum:[{t:'Total commitments (FY2024, record high)',v:'$56B',y:2024}],
   sub:[
    n('IFC Cities / IFC Global Sustainable Cities Program','IFC Cities deploys private capital directly for urban infrastructure in creditworthy markets. IFC GSCP provides complementary TA and advisory services. The $43.7B figure represents IFC\'s total global portfolio — no standalone Cities-only commitment figure is published. The Cities program is a subset of this overall portfolio.','https://www.ifc.org',[{t:'IFC total portfolio (all sectors)',v:'$43.7B',y:2023},{t:'Cities program (subset, not separately reported)',v:'Subset of total',y:2023}],'World Bank Group shareholders','Engage IFC Cities Initiative for municipal corporation/utility financing in creditworthy MIC contexts. Engage GSCP for TA ahead of eventual IFC investment.',null,['Economic inclusion','Housing'])
@@ -371,7 +371,7 @@ function init(){
     '</div><button class="rbtn" id="rbtn">Reset</button></div>'+
     '<div class="srw"><input type="text" id="srch" placeholder="Search any actor, category, or frontier theme (e.g. IDB, GCF, Health, Gender equality)...">'+
     '<div class="srd" id="srd"></div></div>'+
-    '<div class="legend-note">Lines are colored by originating Source category. Dashed lines indicate intermediary-to-intermediary flows through National Governments.</div>'+
+    '<div class="legend-note">Lines are colored by originating Source category. Dashed lines &#8674; show funds routing <em>through</em> National Governments before reaching cities.</div>'+
     '<div class="flowwrap" id="flowwrap"><canvas id="cv"></canvas>'+
     '<div class="zone" id="z-source"><div class="zoneh source">Source</div><div class="grprow" id="g-source"></div></div>'+
     '<div class="zone" id="z-enabler"><div class="zoneh enabler">Enabler</div><div class="grprow" id="g-enabler"></div></div>'+
@@ -405,12 +405,15 @@ function init(){
     }
     if(tp==='int'){
       var node=findNode(id,'int');
+      // Sources: only those directly connecting to THIS intermediary (not to i2i-linked ones)
       var sIds=S.filter(function(s){return s.i.indexOf(id)>=0;}).map(function(s){return s.id;});
+      // Intermediaries: include this node, its i2i targets (dashed arcs), and any that feed into it via i2i
       var intIds=[id];
       if(node.i2i){node.i2i.forEach(function(t){if(intIds.indexOf(t)<0)intIds.push(t);});}
       I.forEach(function(other){if(other.i2i&&other.i2i.indexOf(id)>=0&&intIds.indexOf(other.id)<0)intIds.push(other.id);});
+      // Destinations: from this node only, plus i2i targets — but NOT from i2i upstream nodes
       var dIds=node.d.slice();
-      intIds.forEach(function(iid){var iNode=findNode(iid,'int');if(iNode){iNode.d.forEach(function(did){if(dIds.indexOf(did)<0)dIds.push(did);});}});
+      if(node.i2i){node.i2i.forEach(function(iid){var iNode=findNode(iid,'int');if(iNode){iNode.d.forEach(function(did){if(dIds.indexOf(did)<0)dIds.push(did);});}});}
       return{s:sIds,en:[],int:intIds,d:dIds,color:node.color};
     }
     if(tp==='d'){
@@ -533,10 +536,20 @@ function init(){
           if(c.int.indexOf(targetId)<0)return;
           var b2=ncbox(targetId);if(!b2)return;
           var midY=Math.min(b1.top,b2.top)-22;
+          // Draw dashed arc
           ctx.beginPath();ctx.moveTo(b1.cx,b1.top);
           ctx.bezierCurveTo(b1.cx,midY,b2.cx,midY,b2.cx,b2.top);
           ctx.strokeStyle=iNode.color;ctx.lineWidth=2.5;ctx.globalAlpha=0.55;
           ctx.setLineDash([6,4]);ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;
+          // Draw arrowhead at b2.top pointing downward (into target box)
+          var ax=b2.cx, ay=b2.top;
+          var hs=10; // arrowhead size
+          ctx.beginPath();
+          ctx.moveTo(ax,ay);
+          ctx.lineTo(ax-hs,ay-hs*1.4);
+          ctx.lineTo(ax+hs,ay-hs*1.4);
+          ctx.closePath();
+          ctx.fillStyle=iNode.color;ctx.globalAlpha=0.65;ctx.fill();ctx.globalAlpha=1;
         });
       }
     });
@@ -568,12 +581,12 @@ function init(){
     if(node.themes)h+=themePills(node.themes);
     if(node.i2i&&node.i2i.length){
       var targets=node.i2i.map(function(tid){var t=I.find(function(x){return x.id===tid;});return t?t.l:tid;}).join(', ');
-      h+='<div class="fieldlabel">Passes funds through</div><div class="row"><span class="chip">'+targets+'</span></div>';
+      h+='<div class="fieldlabel">Channels funds through &#8674;</div><div class="row"><span class="chip">'+targets+'</span></div>';
     }
     var upstreamI=I.filter(function(other){return other.i2i&&other.i2i.indexOf(node.id)>=0;});
     if(upstreamI.length){
       var sources=upstreamI.map(function(x){return x.l;}).join(', ');
-      h+='<div class="fieldlabel">Receives pass-through from</div><div class="row"><span class="chip">'+sources+'</span></div>';
+      h+='<div class="fieldlabel">&#8672; Receives pass-through funds from</div><div class="row"><span class="chip">'+sources+'</span></div>';
     }
     var aum=node.aum||[];
     if(aum.length){h+='<div class="fieldlabel">Estimated capital available</div><div class="row">';aum.forEach(function(a){h+='<span class="chip">'+a.t+': <b>'+a.v+'</b> ('+a.y+')</span>';});h+='</div>';}
@@ -607,6 +620,18 @@ function init(){
     var s=subs[idx];if(!s)return;
     document.querySelectorAll('.subchip').forEach(function(el){el.classList.remove('sel');});
     var chip=document.querySelector('[data-idx="'+idx+'"]');if(chip)chip.classList.add('sel');
+
+    // Trigger flow trace on parent category so graphic responds
+    if(act&&atype){
+      var c=gc(act,atype);
+      setTimeout(function(){redraw(c);},30);
+      // Dim all nodes except those in the active flow
+      S.forEach(function(s2){var el=document.getElementById('n-'+s2.id);if(!el)return;el.classList.toggle('dim',c.s.indexOf(s2.id)<0);});
+      EN.forEach(function(e){var el=document.getElementById('n-'+e.id);if(!el)return;el.classList.toggle('dim',c.en.indexOf(e.id)<0);});
+      I.forEach(function(i){var el=document.getElementById('n-'+i.id);if(!el)return;el.classList.toggle('dim',c.int.indexOf(i.id)<0);});
+      D.forEach(function(d){var el=document.getElementById('n-'+d.id);if(!el)return;el.classList.toggle('dim',c.d.indexOf(d.id)<0);});
+    }
+
     var h='<div class="subdetail"><strong style="display:block;margin-bottom:3px">'+s.name;
     if(s.url)h+=' <a class="linklike" href="'+s.url+'" target="_blank" rel="noopener" style="font-size:10.5px">'+s.url.replace('https://','').replace('http://','')+'</a>';
     h+='</strong>'+s.desc;
@@ -615,6 +640,7 @@ function init(){
     if(s.aum&&s.aum.length){h+='<div class="fieldlabel">Estimated capital available</div><div class="row">';s.aum.forEach(function(a){h+='<span class="chip">'+a.t+': <b>'+a.v+'</b> ('+a.y+')</span>';});h+='</div>';}
     if(s.donors){h+='<div class="fieldlabel">Donors / investors involved</div><div class="row"><span class="chip">'+s.donors+'</span></div>';}
     if(s.engagement){h+='<div class="fieldlabel">Recommended MMC engagement</div><div style="margin-top:3px;font-size:11px">'+s.engagement+'</div>';}
+    h+='<div style="font-size:10px;color:#aaa;margin-top:8px;font-style:italic">Flows shown are for the parent category. Sub-actor level flow mapping coming in a future update.</div>';
     h+='</div>';
     document.getElementById('sdt').innerHTML=h;
   }
