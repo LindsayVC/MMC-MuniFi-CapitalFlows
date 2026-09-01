@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UMFF Capital Flow Map v3 — Vantage Collaborative / MMC</title>
+<title>MuniFi Capital Flow Map — Vantage Collaborative / MMC</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;color:#222;padding:14px;background:#fff;max-width:1200px;margin:0 auto}
@@ -52,11 +52,11 @@ canvas{position:absolute;top:0;left:0;pointer-events:none;z-index:1}
 </style>
 </head>
 <body>
-<h1>UMFF Capital Flow Map &mdash; v3.0</h1>
+<h1>MuniFi Capital Flow Map</h1>
 <p class="subtitle">Source &rarr; Enabler &rarr; Intermediary &rarr; Destination &middot; Vantage Collaborative for Mayors Migration Council</p>
 <div id="app"><div style="padding:40px;text-align:center;color:#888">Loading...</div></div>
 <script>
-// UMFF Capital Flow Map — Data v3.0
+// MuniFi Capital Flow Map — Data v3.0
 // Vantage Collaborative for Mayors Migration Council
 // Last updated: September 2026
 
@@ -360,7 +360,7 @@ var D=[
  {id:'d-t4',l:'Tier Four Municipalities',color:'#854F0B',
   desc:'Conflict-affected. Capital markets effectively closed. Primary access points: humanitarian ODA via bilateral donors and UN agencies, diaspora remittances (which flow regardless of conflict status), and parametric insurance payouts to governments. Finance facilities and MDB lending are largely inaccessible.'}
 ];
-// UMFF Capital Flow Map — App Logic v3.0
+// MuniFi Capital Flow Map — App Logic v3.0
 
 function init(){
   document.getElementById('app').innerHTML=
@@ -502,14 +502,14 @@ function init(){
       sNode.i.forEach(function(target){
         var tp=target.indexOf('en-')===0?'en':'int';
         if(tp==='en'&&c.en.indexOf(target)<0)return;
-        // Only draw to intermediaries the source DIRECTLY connects to — not i2i-expanded ones
         if(tp==='int'&&c.int.indexOf(target)<0)return;
-        if(tp==='int'&&sNode.i.indexOf(target)<0)return;
+        // When an intermediary is selected, only draw lines to the clicked facility itself
+        // (not to other intermediaries this source also happens to connect to)
+        if(tp==='int'&&atype==='int'&&target!==act)return;
         var b2=ncbox(target);if(!b2)return;
         routeCurve(ctx,b1,b2,col,false);
       });
       // Only draw direct Source→Destination lines when no intermediary is selected
-      // (when an intermediary is selected, destinations are reached via the facility, not directly)
       if(atype!=='int'){
         sNode.d.forEach(function(did){
           if(c.d.indexOf(did)<0)return;
