@@ -542,7 +542,7 @@ function init(){
   }
 
   function themePills(themes){
-    if(!themes||!themes.length)return '';
+    if(!themes)return '';if(!Array.isArray(themes))themes=themes.split('|');if(!themes.length)return '';
     var THEME_COLORS={
       'Economic inclusion':'#185FA5','Children and caregivers':'#D4537E',
       'Municipal finance for migrants and refugees':'#0F6E56','Health':'#993C1D',
@@ -633,7 +633,7 @@ function init(){
   S.forEach(function(s){
     IDX.push({id:s.id,tp:'s',label:s.l,node:s,match:s.l.toLowerCase(),lvl:'Source'});
     (s.sub||[]).forEach(function(x,idx){
-      var matchStr=x.name.toLowerCase()+' '+(x.themes||[]).join(' ').toLowerCase();
+      var t=Array.isArray(x.themes)?x.themes:(x.themes||'').split('|');var matchStr=x.name.toLowerCase()+' '+t.join(' ').toLowerCase();
       IDX.push({id:s.id,tp:'s',label:x.name+' \u2014 '+s.l,node:s,match:matchStr,subIdx:idx,lvl:'Source actor'});
     });
   });
@@ -646,7 +646,7 @@ function init(){
   I.forEach(function(i){
     IDX.push({id:i.id,tp:'int',label:i.l,node:i,match:i.l.toLowerCase(),lvl:'Intermediary'});
     (i.sub||[]).forEach(function(x,idx){
-      var matchStr=x.name.toLowerCase()+' '+(x.themes||[]).join(' ').toLowerCase();
+      var t=Array.isArray(x.themes)?x.themes:(x.themes||'').split('|');var matchStr=x.name.toLowerCase()+' '+t.join(' ').toLowerCase();
       IDX.push({id:i.id,tp:'int',label:x.name+' \u2014 '+i.l,node:i,match:matchStr,subIdx:idx,lvl:'Intermediary actor'});
     });
   });
