@@ -81,33 +81,33 @@ var S=[
  {id:'s1',l:'MDB – Sovereign Only',color:COLORS.s1,
   desc:'Lends only to national governments backed by a sovereign guarantee. Funds reach subnational actors only via national pass-through through Finance Ministries and Line Ministries.',
   i:['en-guar','en-ta','int-natgov'],d:[],
-  aum:[{t:'Combined IBRD+IDA annual commitments',v:'$66.1B',y:2023}],
+  aum:[{t:'Combined IBRD+IDA annual commitments',v:'~$72B',y:2024}],
   sub:[
-   n('WB IBRD','Lends to creditworthy middle-income governments on near-market terms. No direct subnational lending window.','https://www.worldbank.org',[{t:'Annual commitments',v:'$31.9B',y:2023}],'186 member governments','Engage via national Finance Ministries and the City Creditworthiness Initiative to position MMC member cities for eventual IBRD-backed projects.'),
-   n('WB IDA','Concessional lending to low-income countries, including via the Window for Host Communities and Refugees (WHR) — one of the strongest global mechanisms funding refugee and displacement-affected development.','https://ida.worldbank.org',[{t:'Annual commitments',v:'$34.2B',y:2023}],'Donor government replenishment cycle','Track IDA21 replenishment priorities; advocate for explicit migration-inclusion criteria. WHR window is high priority for member cities in Uganda, Ethiopia, Kenya, Bangladesh, Pakistan.',null,['Reception','Housing','Health','Economic inclusion'])
+   n('WB IBRD','Lends to creditworthy middle-income governments on near-market terms. No direct subnational lending window.','https://www.worldbank.org',[{t:'Annual commitments (FY2024)',v:'~$40.8B',y:2024}],'186 member governments','Engage via national Finance Ministries and the City Creditworthiness Initiative to position MMC member cities for eventual IBRD-backed projects.'),
+   n('WB IDA','Concessional lending to low-income countries, including via the Window for Host Communities and Refugees (WHR) — one of the strongest global mechanisms funding refugee and displacement-affected development.','https://ida.worldbank.org',[{t:'Annual commitments (FY2024)',v:'$31.2B',y:2024}],'Donor government replenishment cycle','Track IDA21 replenishment priorities; advocate for explicit migration-inclusion criteria. WHR window is high priority for member cities in Uganda, Ethiopia, Kenya, Bangladesh, Pakistan.',null,['Reception','Housing','Health','Economic inclusion'])
   ]},
 
  {id:'s2',l:'MDB – Hybrid',color:COLORS.s2,
-  desc:'Lends to both sovereign and (in limited cases) non-sovereign borrowers. Direct subnational lending is available only through EBRD and CAF within this group — not ADB, AfDB, IsDB, or EIB.',
-  i:['en-guar','en-ta','int-natgov','int-ff-sub'],d:['d-corp','d-t2','d-t3'],
-  aum:[{t:'Combined annual approvals',v:'~$117B',y:2023}],
-  note:'Direct flows to destinations apply to EBRD and CAF only. ADB, AfDB, IsDB, and EIB lend primarily to sovereigns.',
+  desc:'Lends to both sovereign and (in limited cases) non-sovereign borrowers. ADB, AfDB, IsDB, and EIB primarily lend to sovereigns, with limited non-sovereign windows.',
+  i:['en-guar','en-ta','int-natgov','int-ff-sub'],d:[],
+  aum:[{t:'Combined annual approvals (ADB+AfDB+IsDB+EIB)',v:'~$117B',y:2023}],
+  note:'These institutions lend primarily through national governments. Direct flows to subnational destinations are not available in this group — see MDB – Direct for EBRD, CAF, and IDB.',
   sub:[
    n('ADB','Strong urban climate resilience focus; growing subnational finance capacity in Asia-Pacific. Direct lending requires sovereign guarantee.','https://www.adb.org',[{t:'Annual commitments',v:'$23.6B',y:2023}],'67 member countries','Connect MMC Asia-Pacific member cities to ADB CDIA project-prep pipeline ahead of MDB engagement.'),
    n('AfDB','Subnational lending primarily sovereign-channeled; urban resilience agenda growing.','https://www.afdb.org',[{t:'Annual approvals',v:'$11.2B',y:2023}],'81 member countries','Engage on AfDB urban resilience agenda; flag displacement-hosting cities for priority project pipelines.'),
    n('IsDB','Active in fragile and conflict-affected OIC member states with refugee-hosting exposure.','https://www.isdb.org',[{t:'Annual approvals',v:'$9.8B',y:2023}],'57 OIC member countries','Priority engagement for MMC members in OIC conflict-affected and refugee-hosting contexts.',null,['Reception','Health']),
-   n('EIB','Largest multilateral lender by volume; significant urban climate finance, limited displacement focus.','https://www.eib.org',[{t:'Annual lending',v:'$72.4B',y:2023}],'EU member states','Advocate for EIB Global to adopt explicit climate-migration criteria in partner-country urban lending.'),
-   n('EBRD','Longest direct subnational lending track record. Green Cities program spans Eastern Europe, MENA, and Central Asia. Model for IDB\'s new sub-sovereign program.','https://www.ebrd.com',[{t:'Annual finance',v:'$13.1B',y:2023}],'EBRD shareholder governments','Engage EBRD Green Cities directly — cities can join without sovereign intermediary. Amman is within EBRD scope.',null,['Climate migration','Reception']),
-   n('CAF','Direct subnational and municipal finance across Latin America. First MDB to launch a Children and Youth Bond Programme (up to $1B, guided by UNICEF\'s Child-Lens Investing Framework, targeting 50M children by 2031 via CAF LAC Future Bank initiative).','https://www.caf.com',[{t:'Annual approvals',v:'$13.5B',y:2023},{t:'Children and Youth Bond Programme',v:'Up to $1B',y:2026}],'21 member countries (LAC + Spain/Portugal)','Direct partnership for MMC LAC member cities. Engage specifically on Children and Youth Bond Programme for child-focused urban infrastructure.',null,['Children and caregivers','Health','Economic inclusion'])
+   n('EIB','Largest multilateral lender by volume; significant urban climate finance, limited displacement focus.','https://www.eib.org',[{t:'Annual lending signatures',v:'€76.6B',y:2024},{t:'EIB Group total (incl. EIF)',v:'€88.8B',y:2024}],'EU member states','Advocate for EIB Global to adopt explicit climate-migration criteria in partner-country urban lending.'),
   ]},
 
  {id:'s3',l:'MDB – Direct',color:COLORS.s3,
-  desc:'Can lend directly to creditworthy subnational governments without a sovereign guarantee.',
+  desc:'Can lend directly to creditworthy subnational governments without a sovereign guarantee, bypassing national pass-through.',
   i:['en-guar','en-ta','int-ff-sub'],d:['d-corp','d-t2','d-t3'],
-  aum:[{t:'IDB Sub-Sovereign Finance Program',v:'Up to $1B',y:2025}],
+  aum:[{t:'CAF annual approvals',v:'$13.5B',y:2023},{t:'EBRD annual investment (record)',v:'€16.8B',y:2025},{t:'IDB Sub-Sovereign Finance Program',v:'Up to $1B',y:2025}],
   sub:[
    n('IDB','Launched $1B Sub-Sovereign Finance Program in 2025 enabling direct lending without sovereign guarantees — pilot stage modeled on EBRD (first transaction: Cartagena, Colombia, Dec 2025). Also administers the IDB Grant Facility for Migration (GRF): up to $100M in grants blended into IDB investment loans at up to 20% per operation, for eligible LAC countries meeting 0.5% migration population threshold.','https://www.iadb.org',[{t:'Sub-Sovereign Finance Program',v:'Up to $1B',y:2025},{t:'IDB GRF (Migration Grant Facility)',v:'Up to $100M',y:2025}],'48 member countries','Flagship engagement: IDB for Cities and Regions pilot — MMC LAC members should seek inclusion in next cohort. Separately, advocate for national governments to structure IDB investment loans that include city-level migrant/refugee components eligible for GRF grant blending.',null,['Reception','Economic inclusion','Housing']),
-   n('CABEI','Central American Bank of Economic Integration. Direct municipal lending available across Central America — a structural advantage over global MDBs that lend only to sovereigns.','https://www.bcie.org',[{t:'Annual approvals',v:'~$4B',y:2023}],'15 member countries (Central America + Mexico, Colombia, Spain, others)','Engage for direct municipal lending in Central American member cities, particularly for migration-corridor infrastructure.',null,['Reception','Economic inclusion']),
+   n('CABEI','Central American Bank of Economic Integration. Direct municipal lending available across Central America — structural advantage over global MDBs. Typical ticket $10M+. 15 member countries.','https://www.bcie.org',[{t:'Annual approvals',v:'~$4B',y:2023},{t:'Typical ticket',v:'$10M+',y:2024}],'15 member countries (Central America + Mexico, Colombia, Spain, others)','Engage for direct municipal lending in Central American member cities, particularly for migration-corridor infrastructure.',null,['Reception','Economic inclusion']),
+   n('EBRD','Longest direct subnational lending track record among MDBs. Green Cities program gives cities direct access without sovereign intermediary across Eastern Europe, MENA, and Central Asia. Model for IDB\'s new sub-sovereign program.','https://www.ebrd.com',[{t:'Annual investment (record high)',v:'€16.8B',y:2025}],'EBRD shareholder governments','Engage EBRD Green Cities directly — cities apply without sovereign intermediary. Amman within scope.',null,['Climate migration','Reception']),
+   n('CAF','Longest-standing direct subnational lending MDB in Latin America. First MDB to launch a Children and Youth Bond Programme (up to $1B, UNICEF Child-Lens Investing Framework) as part of CAF LAC Future Bank targeting $5B by 2031 for 50M children.','https://www.caf.com',[{t:'Annual approvals',v:'$13.5B',y:2023},{t:'Children and Youth Bond Programme',v:'Up to $1B',y:2026}],'21 member countries (LAC + Spain/Portugal)','Direct partnership for MMC LAC cities. Engage Children and Youth Bond Programme for child-focused urban infrastructure.',null,['Children and caregivers','Health','Economic inclusion']),
    n('DBSA','Development Bank of Southern Africa. Direct municipal lending in South Africa and broader Southern Africa region.','https://www.dbsa.org',[{t:'Annual approvals',v:'~$2B',y:2023}],'SADC member countries','Engage for displacement-hosting city financing in Southern Africa context.',null,['Reception','Housing'])
   ]},
 
@@ -121,20 +121,21 @@ var S=[
    n('CVDB (Jordan)','Cities and Villages Development Bank. National municipal lending institution in one of the world\'s highest per-capita refugee-hosting countries.','https://www.cvdb.gov.jo',[],'Jordanian government','High priority given Jordan\'s refugee-hosting context — engage on CVDB financing for Amman and other member cities.',null,['Reception','Housing']),
    n('Banque de l\'Habitat (Tunisia)','Housing and urban development bank; key channel for subnational urban finance.',null,[],'Tunisian government','Explore for North Africa member city housing financing.',null,['Housing']),
    n('HDFC (India)','Housing Development Finance Corporation; subnational urban infrastructure at scale.',null,[{t:'Total assets',v:'~$70B',y:2023}],'Indian capital markets','Engage for Indian member city housing finance precedents.',null,['Housing']),
-   n('Banobras (Mexico)','National infrastructure and subnational finance bank with strong municipal lending track record.',null,[{t:'Active portfolio',v:'~$25B',y:2023}],'Mexican government','Study FINDETER/Banobras partnership models as templates for other LAC contexts.',null,['Economic inclusion'])
+   n('Banobras (Mexico)','National infrastructure and subnational finance bank with strong municipal lending track record.',null,[{t:'Active portfolio',v:'~$25B',y:2023}],'Mexican government','Study FINDETER/Banobras partnership models as templates for other LAC contexts.',null,['Economic inclusion']),
+   n('CAIXA Econômica Federal (Brazil)','Brazil\'s federal savings bank and primary social housing financier. Manages Minha Casa Minha Vida affordable housing program at tens of billions of reais. Finances Brazilian municipalities for social housing. Strictly domestic.','https://www.caixa.gov.br',[],'Brazilian government (FGTS workers\' fund)','Engage via Brazilian municipal partnerships for cities like Boa Vista and Manaus managing Venezuelan migration — CAIXA-financed housing directly affects displaced populations.',null,['Housing','Economic inclusion'])
   ]},
 
  {id:'s5',l:'DFI – Global',color:COLORS.s5,
   desc:'IFC is the World Bank Group\'s private sector arm. Can lend directly to creditworthy subnational and municipal-adjacent entities including municipal corporations. Also deploys first-loss tranches in blended structures.',
   i:['en-guar','int-ff-clim'],d:['d-corp','d-t2'],
-  aum:[{t:'Long-term finance committed',v:'$43.7B',y:2023}],
+  aum:[{t:'Total commitments (FY2024, record high)',v:'$56B',y:2024}],
   sub:[
-   n('IFC Cities','Direct urban infrastructure financing with private capital. IFC Global Sustainable Cities Program provides complementary advisory and TA services to cities.','https://www.ifc.org',[{t:'Long-term finance committed',v:'$43.7B',y:2023}],'World Bank Group shareholders','Engage IFC Cities Initiative directly for municipal corporation/utility financing in creditworthy MIC contexts — most direct private-capital entry point on the map.',null,['Economic inclusion','Housing'])
+   n('IFC Cities / IFC Global Sustainable Cities Program','IFC Cities deploys private capital directly for urban infrastructure in creditworthy markets. IFC GSCP provides complementary TA and advisory services. The $43.7B figure represents IFC\'s total global portfolio — no standalone Cities-only commitment figure is published. The Cities program is a subset of this overall portfolio.','https://www.ifc.org',[{t:'IFC total portfolio (all sectors)',v:'$43.7B',y:2023},{t:'Cities program (subset, not separately reported)',v:'Subset of total',y:2023}],'World Bank Group shareholders','Engage IFC Cities Initiative for municipal corporation/utility financing in creditworthy MIC contexts. Engage GSCP for TA ahead of eventual IFC investment.',null,['Economic inclusion','Housing'])
   ]},
 
  {id:'s6',l:'DFI – Bilateral',color:COLORS.s6,
   desc:'Bilateral DFIs deploying loans, guarantees, and equity in developing markets. Displacement/migration rarely an explicit investment thesis.',
-  i:['en-ta','int-natgov','int-ff-sub'],d:['d-t2','d-t3'],
+  i:['int-natgov','int-ff-sub','int-ff-clim','int-ff-mig'],d:['d-t2','d-t3'],
   aum:[{t:'Combined portfolio',v:'~$133B',y:2023}],
   sub:[
    n('BII (UK)','British International Investment. Climate and urban focus; some Africa refugee-hosting country exposure.','https://www.bii.co.uk',[{t:'Net assets',v:'$7.6B',y:2023}],'UK government (FCDO)','Engage on BII urban/climate strategy; advocate for displacement-inclusion criteria.'),
@@ -149,33 +150,32 @@ var S=[
   desc:'Pooled philanthropic vehicles aggregating multiple donors. Deploy more flexibly than bilaterals; rarely reach municipal level directly.',
   i:['int-natgov','int-ff-sub','int-ff-mig'],d:['d-t1','d-t2','d-t3','d-t4'],
   aum:[],sub:[
-   n('ClimateWorks Foundation','Philanthropic collaborative funding climate adaptation and resilience. Adaptation and Resilience Fund pool exceeds $50M.','https://www.climateworks.org',[{t:'A&R Fund pool',v:'$50M+',y:2023}],'Multiple philanthropic donors','Engage on climate-migration nexus programming within urban resilience grants.',null,['Climate migration']),
+   n('ClimateWorks Foundation','Philanthropic collaborative funding climate adaptation and resilience. A&R Fund pools $50M+ from ClimateWorks and partner foundations; grants $500K-$5M via RFP cycles. ARC funder collaborative (70+ foundations) coordinates adaptation strategy.','https://www.climateworks.org',[{t:'A&R Fund pool',v:'$50M+',y:2024},{t:'Grant range',v:'$500K-$5M',y:2024}],'Multiple philanthropic donors','Engage on climate-migration nexus programming within urban resilience grants.',null,['Climate migration']),
    n('Bloomberg Philanthropies – Mayors Challenge','Direct city grants ($1M-$5M prizes) for innovative urban solutions. Cities design and implement projects.','https://www.bloomberg.org',[{t:'Per prize',v:'$1M-$5M',y:2023}],'Bloomberg Philanthropies','Engage on Mayors Challenge alignment with migration-inclusive urban innovation.',null,['Economic inclusion','Reception'])
   ]},
 
- {id:'s8',l:'Philanthropy – HNW',color:COLORS.s8,
-  desc:'High-net-worth individual philanthropic giving. Increasingly active in climate-migration nexus.',
+ {id:'s8',l:'Philanthropy – UHNWI',color:COLORS.s8,
+  desc:'Ultra-high-net-worth individual philanthropic giving. Increasingly active in climate-migration nexus.',
   i:['int-ff-clim'],d:['d-t2','d-t3'],
-  aum:[],sub:[],placeholder:true},
+  aum:[],sub:[]},
 
  {id:'s9',l:'Philanthropy – Family Offices',color:COLORS.s9,
   desc:'Family office philanthropic and impact-oriented capital. Tends to work through trusted intermediaries.',
   i:['int-ff-clim'],d:['d-t2','d-t3'],
-  aum:[],sub:[],placeholder:true},
+  aum:[],sub:[]},
 
  {id:'s10',l:'Impact Investors',color:COLORS.s10,
   desc:'Funds and networks seeking measurable social and environmental impact alongside financial return.',
-  i:['int-ff-clim'],d:['d-corp','d-t2','d-t3'],
+  i:['int-ff-clim','int-ff-mig','int-ff-sub'],d:['d-corp','d-t2','d-t3'],
   aum:[{t:'Global impact investing market',v:'$1.164T',y:2023}],
   sub:[
    n('LeapFrog Investments','Emerging market impact investor; financial inclusion and climate focus.','https://leapfroginvest.com',[{t:'AUM',v:'$2B+',y:2023}],'Institutional LPs','Engage on financial inclusion programming intersecting displaced populations.',null,['Economic inclusion']),
    n('Apis Partners','Financial services impact investor across Africa and Asia.','https://apispartners.com',[{t:'AUM',v:'$2.4B',y:2023}],'Institutional LPs','Engage on fintech/financial inclusion for displaced and host communities.',null,['Economic inclusion']),
-   n('Convergence Finance','Blended finance market infrastructure. Design grants ($200K-$300K) and deal-matching for blended finance structures. Not a direct capital source for cities.','https://www.convergence.finance',[{t:'Design grants',v:'$200K-$300K',y:2023}],'Bilateral donors, foundations','Engage for blended finance design support for UMFF-adjacent structures.')
   ]},
 
  {id:'s11',l:'Fund Managers',color:COLORS.s11,
   desc:'Asset managers deploying capital into infrastructure and climate funds. Require bankable projects; cities managing displacement rarely qualify without significant derisking.',
-  i:['int-ff-sub','int-ff-clim'],d:['d-corp','d-t2'],
+  i:['int-ff-sub','int-ff-clim','int-ff-mig'],d:['d-corp','d-t1','d-t2'],
   aum:[{t:'Global infrastructure AUM',v:'$1.3T',y:2023}],
   sub:[
    n('Pegasus Capital','Manages the Subnational Climate Fund targeting city-level climate finance.','https://www.pegasuscap.com',[],'Family offices, DFIs','Engage via Subnational Climate Fund for Tier Two climate-resilience infrastructure financing.',null,['Climate migration']),
@@ -190,8 +190,9 @@ var S=[
   i:['int-un-pass','int-natgov'],d:['d-t2','d-t3','d-t4'],
   aum:[{t:'Total ODA (DAC donors, excl. US)',v:'~$170B',y:2023}],
   sub:[
-   n('FCDO (UK)','Strong humanitarian and displacement portfolio.','https://www.gov.uk',[{t:'Annual ODA',v:'GBP 14B',y:2024}],'UK government','Engage early given budget pressure — advocate for displacement programming protection.','31% programme reduction by 2027.',['Reception','Health']),
+   n('FCDO (UK)','Strong humanitarian and displacement portfolio. ODA budget reduced from 0.5% to 0.3% of GNI by 2027.','https://www.gov.uk',[{t:'Annual ODA (2024)',v:'GBP 14B',y:2024}],'UK government','Engage early given budget pressure — advocate for displacement programming protection.','31% programme reduction by 2027.',['Reception','Health']),
    n('BMZ/GIZ (Germany)','Strong subnational TA; PROSPECTS Partnership co-funder.','https://www.giz.de',[{t:'GIZ annual turnover',v:'EUR 4.2B',y:2023}],'German government','Leverage PROSPECTS relationship for UMFF positioning.','German ODA under austerity pressure.',['Reception','Economic inclusion']),
+   n('BMZ & KfW Sustainable Urban Development','Germany\'s bilateral development bank (KfW) providing concessional loans EUR 10M-500M per country for sustainable urban development. Explicit migration focus in programming. Flows through national governments.','https://www.kfw-entwicklungsbank.de',[{t:'Per country loan',v:'EUR 10M-500M',y:2024}],'German government (BMZ)','Engage on migration-inclusive urban infrastructure financing in member city countries where Germany has existing KfW programs.',null,['Reception','Economic inclusion','Housing']),
    n('EU – NDICI','Largest ODA provider as a bloc; integrates migration, climate, and development.','https://international-partnerships.ec.europa.eu',[{t:'NDICI-Global Europe total',v:'EUR 79.5B',y:'2021-2027'}],'EU member states','High-priority advocacy target given explicit migration-development mandate.',null,['Reception','Economic inclusion','Climate migration']),
    n('EU AMIF','EU Asylum, Migration and Integration Fund. Direct grants to EU member state cities and organizations for migrant integration programming — EUR 1M-5M per transnational project. Rare example of bilateral funding flowing directly to cities.','https://home-affairs.ec.europa.eu',[{t:'Per transnational project',v:'EUR 1M-5M',y:2023}],'EU member states','Engage EU member MMC cities on AMIF alignment with migrant-inclusive programming.',null,['Reception','Economic inclusion','Housing']),
    n('Netherlands (DGIS)','Strong humanitarian-development nexus; displacement and climate explicit priorities.','https://www.government.nl',[{t:'Annual ODA',v:'EUR 5.3B',y:2023}],'Dutch government','Priority partner despite austerity pressure.','ODA under austerity pressure.',['Reception','Climate migration']),
@@ -207,7 +208,7 @@ var S=[
   sub:[
    n('FCDO Impact Programme','UK blended finance facility.','https://www.gov.uk',[{t:'Programme size (original)',v:'GBP 735M',y:'2021-2026'}],'UK government','Verify current status given FCDO 31% ODA cut before committing engagement resources.','Status uncertain given broader FCDO budget cuts.'),
    n('EU EFSD+','EU blended finance guarantee mechanism; explicit migration nexus in guarantee criteria.','https://international-partnerships.ec.europa.eu',[{t:'Guarantee envelope',v:'EUR 40B',y:'2021-2027'}],'EU member states','High-priority given explicit migration nexus in guarantee criteria.',null,['Reception','Economic inclusion']),
-   n('Africa Investment Platform (AIP) – EIB','EU regional blending facility for Sub-Saharan Africa. EU grants leverage European finance institution loans. No direct city access.','https://www.eib.org',[],'EU, European finance institutions','Engage via EIB and partner MDB pipelines for African member city infrastructure.',null,['Climate migration']),
+   n('Africa Investment Platform (AIP) – EIB','EU regional blending facility for Sub-Saharan Africa. EU grants leverage loans from European finance institutions. Financing flows through national governments and MDB partners — no direct city access.','https://www.eib.org',[],'EU, European finance institutions','Engage via EIB and partner MDB pipelines for African member city infrastructure, not directly.',null,['Climate migration']),
    n('ALTERRA (UAE)','$250B UAE-anchored climate investment platform; Transformation Fund provides catalytic capital for developing markets.','https://www.alterraclimate.com',[{t:'Total commitment',v:'$250B',y:'2030 horizon'}],'UAE sovereign capital, COP28 partners','Major emerging capital pool; engage early on climate-migration inclusion.',null,['Climate migration'])
   ]},
 
@@ -232,11 +233,11 @@ var S=[
 
  {id:'s16',l:'Sovereign Wealth Funds / Institutional Investors',color:COLORS.s16,
   desc:'Pension funds, insurance companies, and SWFs. Largest untapped capital pool globally. Virtually no direct exposure to subnational displacement contexts yet.',
-  i:['int-ff-sub','int-ff-clim'],d:['d-corp','d-t2'],
+  i:['int-ff-sub','int-ff-clim'],d:['d-corp','d-t1','d-t2'],
   aum:[{t:'Global SWF assets',v:'$11.3T',y:2023},{t:'Global pension assets',v:'$55.7T',y:2023}],
   sub:[
    n('GIC (Singapore)','SWF with growing sustainable infrastructure exposure.','https://www.gic.com.sg',[{t:'AUM',v:'$770B+',y:2023}],'Singapore government','Monitor sustainable infrastructure allocation for MIC engagement opportunities.'),
-   n('GPFG (Norway)','World\'s largest SWF. ESG-integrated; limited emerging market infrastructure.','https://www.nbim.no',[{t:'AUM',v:'$1.6T',y:2023}],'Norwegian government','Track ESG policy shifts for displacement-inclusive criteria advocacy.'),
+   n('GPFG (Norway)','World\'s largest SWF. ESG-integrated; limited emerging market infrastructure.','https://www.nbim.no',[{t:'AUM',v:'~$1.8T',y:2025}],'Norwegian government','Track ESG policy shifts for displacement-inclusive criteria advocacy.'),
    n('APG (Netherlands)','Large pension fund with significant infrastructure and impact allocation.','https://www.apg.nl',[{t:'AUM',v:'EUR 596B',y:2023}],'Dutch pension beneficiaries','Engage on impact infrastructure allocation relevant to urban resilience.',null,['Climate migration']),
    n('CDPQ (Canada)','Quebec pension; significant global infrastructure investor with climate focus.','https://www.cdpq.com',[{t:'AUM',v:'CAD $434B',y:2023}],'Quebec pension beneficiaries','Monitor climate infrastructure allocation for displacement-adjacent opportunities.',null,['Climate migration'])
   ]}
@@ -260,7 +261,7 @@ var EN=[
    n('ADB CDIA','Cities Development Initiative for Asia. TA and investment preparation for Asian cities.','https://cdia.asia',[{t:'Portfolio facilitated',v:'$3.2B+',y:2023}],'ADB, bilateral donors','Direct partnership for MMC Asia-Pacific member cities seeking project-prep support.'),
    n('World Bank City Creditworthiness Initiative (CCI)','Hands-on support helping cities strengthen financial performance and access financing, including City Creditworthiness Academies and the Local Government Borrowing Database.','https://www.worldbank.org',[{t:'Cities supported',v:'200+',y:2023}],'World Bank Group','High-value target — explore whether MMC member cities can access CCI Academies directly.'),
    n('City Climate Finance Gap Fund','TA for city climate action. World Bank window ties TA to committed WB lending; EIB window prepares projects and seeks onward financing from third parties. ICLEI, C40, and GCoM are operational partners. Over 390 cities approved.','https://www.citygapfund.org',[{t:'Donor commitments',v:'EUR 100M+',y:2024},{t:'Cities approved',v:'390+',y:2026}],'Germany (BMUKN/BMZ), Luxembourg; implemented by World Bank and EIB','Direct engagement target — explore whether MMC member cities qualify for Gap Fund TA.',null,['Climate migration','Housing']),
-   n('PPIAF','Public-Private Infrastructure Advisory Facility. Policy, regulatory, and institutional strengthening to enable private participation in infrastructure. Sub-National TA program directly supports municipal access to finance without requiring national accreditation.','https://www.ppiaf.org',[{t:'Resources deployed',v:'$400M+',y:2024},{t:'Infrastructure investments catalyzed',v:'$29B',y:2024}],'~12 multilateral and bilateral donors','Engage PPIAF Sub-National TA program — direct route for cities to access World Bank Group support.',null,['Municipal finance for migrants and refugees']),
+   n('PPIAF','Public-Private Infrastructure Advisory Facility. Policy, regulatory, and institutional strengthening for private participation in infrastructure. Sub-National TA program supports municipal access to finance without requiring national accreditation. Individual grants typically $50K-$500K.','https://www.ppiaf.org',[{t:'Resources deployed since inception',v:'$400M+',y:2024},{t:'Infrastructure investments catalyzed',v:'$29B',y:2024},{t:'Typical grant size',v:'$50K-$500K',y:2024}],'~12 multilateral and bilateral donors','Engage PPIAF Sub-National TA program — direct route for cities to access World Bank Group support.',null,['Municipal finance for migrants and refugees']),
    n('AfDB Urban and Municipal Development Fund (UMDF)','AfDB trust fund directly engaging African cities. Three windows: African Cities Program (2-year intensive), Project Preparation Window (transaction advisory), Municipal Access to Finance Window (creditworthiness). Bypasses sovereign intermediaries.','https://www.afdb.org',[],'Nordic Development Fund, Wallonia, Switzerland','High direct relevance for African member cities — engagement bypasses sovereign channel entirely. Selection is relationship-driven rather than open call.',null,['Municipal finance for migrants and refugees','Housing']),
    n('IFC Global Sustainable Cities Program','Advisory program providing TA to cities on sustainable urban development. Not a capital facility — complements IFC Cities direct financing.','https://www.ifc.org',[],'IFC','Engage alongside IFC Cities Initiative for cities seeking both TA and eventual investment financing.',null,['Economic inclusion','Housing']),
    n('Global Infrastructure Facility (GIF)','G20 initiative helping governments build bankable infrastructure pipelines for private investment. Transaction advisory for complex PPP structures in EMDEs. Coordinates across MDBs, private investors, and governments.','https://www.globalinfrafacility.org',[{t:'Pipeline supported',v:'Multi-billion USD',y:2023}],'G20 governments, MDB partners','Engage for PPP infrastructure pipeline development in MMC member cities seeking private co-investment.',null,['Municipal finance for migrants and refugees','Economic inclusion'])
@@ -351,13 +352,13 @@ var D=[
  {id:'d-corp',l:'Municipal Corporations / Enterprises',color:'#854F0B',
   desc:'Utilities, transit agencies, and parastatal entities with ring-fenced revenue streams (tariffs, fares). Can access commercial finance even where the parent municipality cannot.'},
  {id:'d-t1',l:'Tier One Municipalities',color:'#FAC775',
-  desc:'HIC, strong creditworthiness. Broadest access to commercial, multilateral, and institutional capital. EU AMIF is a rare example of bilateral funding flowing directly to these cities.'},
+  desc:'HIC, strong creditworthiness. Broadest access to commercial, multilateral, and institutional capital. Reachable by fund managers, SWFs/institutional investors, and finance facilities. EU AMIF is a rare example of bilateral ODA flowing directly to these cities.'},
  {id:'d-t2',l:'Tier Two Municipalities',color:'#EF9F27',
   desc:'LIC/MIC, strong creditworthiness. Reachable by DFIs, subnational finance facilities, and direct-lending MDBs.'},
  {id:'d-t3',l:'Tier Three Municipalities',color:'#BA7517',
   desc:'LIC/MIC, weak creditworthiness. Requires significant derisking, guarantees, or TA before commercial/MDB engagement is viable.'},
  {id:'d-t4',l:'Tier Four Municipalities',color:'#854F0B',
-  desc:'Conflict-affected. Capital markets effectively closed; humanitarian channels dominate. Parametric insurance and pooled humanitarian funds are primary access points.'}
+  desc:'Conflict-affected. Capital markets effectively closed. Primary access points: humanitarian ODA via bilateral donors and UN agencies, diaspora remittances (which flow regardless of conflict status), and parametric insurance payouts to governments. Finance facilities and MDB lending are largely inaccessible.'}
 ];
 // UMFF Capital Flow Map — App Logic v3.0
 
