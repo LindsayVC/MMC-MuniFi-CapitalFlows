@@ -508,14 +508,19 @@ function init(){
         var b2=ncbox(target);if(!b2)return;
         routeCurve(ctx,b1,b2,col,false);
       });
-      sNode.d.forEach(function(did){
-        if(c.d.indexOf(did)<0)return;
-        var b2=ncbox(did);if(!b2)return;
-        routeCurve(ctx,b1,b2,col,false);
-      });
+      // Only draw direct Source→Destination lines when no intermediary is selected
+      // (when an intermediary is selected, destinations are reached via the facility, not directly)
+      if(atype!=='int'){
+        sNode.d.forEach(function(did){
+          if(c.d.indexOf(did)<0)return;
+          var b2=ncbox(did);if(!b2)return;
+          routeCurve(ctx,b1,b2,col,false);
+        });
+      }
     });
 
     c.en.forEach(function(eid){
+      if(atype==='int')return; // when viewing a facility, enabler lines are not relevant
       var eNode=findNode(eid,'en');
       var b1=ncbox(eid);if(!b1)return;
       eNode.d.forEach(function(did){
