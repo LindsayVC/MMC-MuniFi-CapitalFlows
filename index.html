@@ -552,39 +552,39 @@ function init(){
     var ctx=cv.getContext('2d');
     ctx.clearRect(0,0,cv.width,cv.height);
 
-    // Draw dashed lines for MDB → NDB capitalization (both directions)
-    // Forward: MDB clicked → draw line to NDB
+    // Draw curved dashed lines for MDB → NDB capitalization (arcs below the Source tier)
+    function drawSrcArc(b1,b2,color){
+      // Arc curves downward below both boxes — control point sits below the midpoint
+      var mx=(b1.cx+b2.cx)/2;
+      var belowY=Math.max(b1.bottom,b2.bottom)+80; // 80px below the lower box
+      ctx.beginPath();ctx.moveTo(b1.cx,b1.bottom);
+      ctx.bezierCurveTo(b1.cx,belowY,b2.cx,belowY,b2.cx,b2.bottom);
+      ctx.strokeStyle=color;ctx.lineWidth=2.5;ctx.globalAlpha=0.55;
+      ctx.setLineDash([6,4]);ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;
+      // Arrowhead at b2.bottom pointing upward into the target box
+      var ax=b2.cx,ay=b2.bottom,hs=9;
+      ctx.beginPath();ctx.moveTo(ax,ay);
+      ctx.lineTo(ax-hs,ay+hs*1.4);ctx.lineTo(ax+hs,ay+hs*1.4);
+      ctx.closePath();ctx.fillStyle=color;ctx.globalAlpha=0.65;ctx.fill();ctx.globalAlpha=1;
+    }
+    // Forward: MDB clicked → draw arc to NDB
     if(c.srcLinks&&c.srcLinks.length){
       var sNode=findNode(c.s[0],'s');
       var b1=ncbox(c.s[0]);
       if(b1&&sNode){
         c.srcLinks.forEach(function(linkedId){
           var b2=ncbox(linkedId);if(!b2)return;
-          ctx.beginPath();ctx.moveTo(b1.cx,b1.cy);ctx.lineTo(b2.cx,b2.cy);
-          ctx.strokeStyle=sNode.color;ctx.lineWidth=2;ctx.globalAlpha=0.5;
-          ctx.setLineDash([6,4]);ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;
-          var angle=Math.atan2(b2.cy-b1.cy,b2.cx-b1.cx);var hs=9;
-          ctx.beginPath();ctx.moveTo(b2.cx,b2.cy);
-          ctx.lineTo(b2.cx-hs*Math.cos(angle-0.4),b2.cy-hs*Math.sin(angle-0.4));
-          ctx.lineTo(b2.cx-hs*Math.cos(angle+0.4),b2.cy-hs*Math.sin(angle+0.4));
-          ctx.closePath();ctx.fillStyle=sNode.color;ctx.globalAlpha=0.6;ctx.fill();ctx.globalAlpha=1;
+          drawSrcArc(b1,b2,sNode.color);
         });
       }
     }
-    // Reverse: NDB clicked → draw lines FROM each upstream MDB to NDB
+    // Reverse: NDB clicked → draw arcs FROM each upstream MDB to NDB
     if(c.upstream&&c.upstream.length){
       var ndbBox=ncbox(act);
       c.upstream.forEach(function(upId){
         var upNode=findNode(upId,'s');
         var b1=ncbox(upId);if(!b1||!ndbBox)return;
-        ctx.beginPath();ctx.moveTo(b1.cx,b1.cy);ctx.lineTo(ndbBox.cx,ndbBox.cy);
-        ctx.strokeStyle=upNode.color;ctx.lineWidth=2;ctx.globalAlpha=0.5;
-        ctx.setLineDash([6,4]);ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;
-        var angle=Math.atan2(ndbBox.cy-b1.cy,ndbBox.cx-b1.cx);var hs=9;
-        ctx.beginPath();ctx.moveTo(ndbBox.cx,ndbBox.cy);
-        ctx.lineTo(ndbBox.cx-hs*Math.cos(angle-0.4),ndbBox.cy-hs*Math.sin(angle-0.4));
-        ctx.lineTo(ndbBox.cx-hs*Math.cos(angle+0.4),ndbBox.cy-hs*Math.sin(angle+0.4));
-        ctx.closePath();ctx.fillStyle=upNode.color;ctx.globalAlpha=0.6;ctx.fill();ctx.globalAlpha=1;
+        drawSrcArc(b1,ndbBox,upNode.color);
       });
     }
 
