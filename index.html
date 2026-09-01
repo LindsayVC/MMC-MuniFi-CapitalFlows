@@ -80,6 +80,7 @@ function n(name,desc,url,aum,donors,engagement,note,themes,source){
 
 var S=[
  {id:'s1',l:'MDB – Sovereign Only',color:COLORS.s1,
+  srcLinks:['s4'],
   desc:'Lends only to national governments backed by a sovereign guarantee. Funds reach subnational actors only via national pass-through through Finance Ministries and Line Ministries.',
   i:['en-guar','en-ta','int-natgov'],d:[],
   aum:[{t:'Combined IBRD+IDA annual commitments',v:'~$72B',y:2024}],
@@ -89,6 +90,7 @@ var S=[
   ]},
 
  {id:'s2',l:'MDB – Hybrid',color:COLORS.s2,
+  srcLinks:['s4'],
   desc:'Lends to both sovereign and (in limited cases) non-sovereign borrowers. ADB, AfDB, IsDB, and EIB primarily lend to sovereigns, with limited non-sovereign windows.',
   i:['en-guar','en-ta','int-natgov','int-ff-sub'],d:[],
   aum:[{t:'Combined annual approvals (ADB+AfDB+IsDB+EIB, most recent)',v:'~$125B+',y:2024}],
@@ -101,6 +103,7 @@ var S=[
   ]},
 
  {id:'s3',l:'MDB – Direct',color:COLORS.s3,
+  srcLinks:['s4'],
   desc:'Can lend directly to creditworthy subnational governments without a sovereign guarantee, bypassing national pass-through.',
   i:['en-ta','int-ff-sub'],d:['d-corp','d-t2','d-t3'],
   aum:[{t:'CAF annual approvals',v:'$13.5B',y:2023},{t:'EBRD annual investment (record)',v:'€16.8B',y:2025},{t:'IDB Sub-Sovereign Finance Program',v:'Up to $1B',y:2025}],
@@ -398,7 +401,7 @@ function init(){
     '</div><button class="rbtn" id="rbtn">Reset</button></div>'+
     '<div class="srw"><input type="text" id="srch" placeholder="Search any actor, category, or frontier theme (e.g. IDB, GCF, Health, Gender equality)...">'+
     '<div class="srd" id="srd"></div></div>'+
-    '<div class="legend-note">Lines are colored by originating Source category. Dashed lines &#8674; show funds routing <em>through</em> National Governments before reaching cities.</div>'+
+    '<div class="legend-note">Lines are colored by originating Source category. Dashed lines &#8674; show funds routing <em>through</em> National Governments before reaching cities. Dashed lines within the Source tier show MDB capitalization of National Development Banks.</div>'+
     '<div class="flowwrap" id="flowwrap"><canvas id="cv"></canvas>'+
     '<div class="zone" id="z-source"><div class="zoneh source">Source</div><div class="grprow" id="g-source"></div></div>'+
     '<div class="zone" id="z-enabler"><div class="zoneh enabler">Enabler</div><div class="grprow" id="g-enabler"></div></div>'+
@@ -423,7 +426,12 @@ function init(){
       var intIds=node.i.filter(function(x){return x.indexOf('int-')===0;});
       var expanded=intIds.slice();
       intIds.forEach(function(iid){var iNode=findNode(iid,'int');if(iNode&&iNode.i2i){iNode.i2i.forEach(function(t){if(expanded.indexOf(t)<0)expanded.push(t);});}});
-      return{s:[id],en:node.i.filter(function(x){return x.indexOf('en-')===0;}),int:expanded,d:node.d,color:node.color};
+      // Build destination set: source's own d array PLUS destinations of connected intermediaries
+      var dIds=node.d.slice();
+      expanded.forEach(function(iid){var iNode=findNode(iid,'int');if(iNode){iNode.d.forEach(function(did){if(dIds.indexOf(did)<0)dIds.push(did);});}});
+      // Include srcLinks (e.g. MDBs → NDBs capitalization)
+      var srcLinkIds=node.srcLinks||[];
+      return{s:[id],en:node.i.filter(function(x){return x.indexOf('en-')===0;}),int:expanded,d:dIds,srcLinks:srcLinkIds,color:node.color};
     }
     if(tp==='en'){
       var node=findNode(id,'en');
@@ -525,6 +533,30 @@ function init(){
     var cv=document.getElementById('cv');
     var ctx=cv.getContext('2d');
     ctx.clearRect(0,0,cv.width,cv.height);
+
+    // Draw dashed lines from source to srcLink sources (e.g. MDB → NDB capitalization)
+    if(c.srcLinks&&c.srcLinks.length){
+      var sNode=findNode(c.s[0],'s');
+      var b1=ncbox(c.s[0]);
+      if(b1&&sNode){
+        c.srcLinks.forEach(function(linkedId){
+          var b2=ncbox(linkedId);if(!b2)return;
+          // Draw horizontal dashed line within Source tier
+          ctx.beginPath();ctx.moveTo(b1.cx,b1.cy);ctx.lineTo(b2.cx,b2.cy);
+          ctx.strokeStyle=sNode.color;ctx.lineWidth=2;ctx.globalAlpha=0.5;
+          ctx.setLineDash([6,4]);ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;
+          // Arrowhead pointing toward NDB
+          var angle=Math.atan2(b2.cy-b1.cy,b2.cx-b1.cx);
+          var hs=9;
+          ctx.beginPath();
+          ctx.moveTo(b2.cx,b2.cy);
+          ctx.lineTo(b2.cx-hs*Math.cos(angle-0.4),b2.cy-hs*Math.sin(angle-0.4));
+          ctx.lineTo(b2.cx-hs*Math.cos(angle+0.4),b2.cy-hs*Math.sin(angle+0.4));
+          ctx.closePath();
+          ctx.fillStyle=sNode.color;ctx.globalAlpha=0.6;ctx.fill();ctx.globalAlpha=1;
+        });
+      }
+    }
 
     c.s.forEach(function(sid){
       var sNode=findNode(sid,'s');
@@ -700,7 +732,11 @@ function init(){
       var c=gc(act,atype);
       setTimeout(function(){redraw(c);},30);
       // Dim all nodes except those in the active flow
-      S.forEach(function(s2){var el=document.getElementById('n-'+s2.id);if(!el)return;el.classList.toggle('dim',c.s.indexOf(s2.id)<0);});
+      S.forEach(function(s2){var el=document.getElementById('n-'+s2.id);if(!el)return;
+      // Highlight if in active source set OR in srcLinks
+      var active=c.s.indexOf(s2.id)>=0||(c.srcLinks&&c.srcLinks.indexOf(s2.id)>=0);
+      el.classList.toggle('dim',!active);
+    });
       EN.forEach(function(e){var el=document.getElementById('n-'+e.id);if(!el)return;el.classList.toggle('dim',c.en.indexOf(e.id)<0);});
       I.forEach(function(i){var el=document.getElementById('n-'+i.id);if(!el)return;el.classList.toggle('dim',c.int.indexOf(i.id)<0);});
       D.forEach(function(d){var el=document.getElementById('n-'+d.id);if(!el)return;el.classList.toggle('dim',c.d.indexOf(d.id)<0);});
