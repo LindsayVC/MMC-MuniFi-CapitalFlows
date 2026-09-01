@@ -235,8 +235,8 @@ var S=[
   ]},
 
  {id:'s15',l:'Parametric Insurance',color:COLORS.s15,
-  desc:'Risk pools paying out directly to governments after a triggering disaster event. A direct capital source providing fiscal liquidity — not a credit enhancer for third-party lenders.',
-  i:['int-natgov'],d:['d-t3'],
+  desc:'Risk pools paying out directly to national governments after a triggering disaster event, providing rapid fiscal liquidity. Payouts are also sometimes channeled through UN agencies, IFRC, and other international organizations for community-level humanitarian deployment alongside national governments.',
+  i:['int-natgov','int-un-pass'],d:[],
   aum:[],
   sub:[
    n('CCRIF SPC','Caribbean Catastrophe Risk Insurance Facility; parametric payouts for Caribbean and Central American governments.','https://www.ccrif.org',[{t:'Claims paid to date',v:'$280M+',y:2023}],'CARICOM governments, donor capitalization','Engage CARICOM member cities on post-disaster liquidity access pathways.',null,['Climate migration','Reception'],{url:'https://www.ccrif.org/content/annual-report',label:'CCRIF Annual Report 2024'}),
@@ -356,14 +356,20 @@ var I=[
    n('Line Ministries','Sector ministries (Urban/Housing, Migration/Interior, Planning, Water, Transport) that may receive sector-specific or displacement-related funding directly, bypassing Finance.',null,[],'Sector-specific donors and lenders','Routing varies by funding type — map relevant line ministry per country context.')
   ]},
 
- {id:'int-un-pass',l:'UN Agencies – Pass-through / Pooled',color:'#3C3489',
-  desc:'Pooled funds administered by UN agencies, aggregating donor capital for implementing partners. Route through national governments before reaching subnational actors.',
+ {id:'int-un-pass',l:'UN & International Agencies',color:'#3C3489',
+  desc:'UN agencies and international organizations deploying humanitarian and development capital — including parametric insurance payouts, pooled funds, and climate risk finance — to national governments and communities. Several receive parametric insurance payouts directly as deployment partners alongside national governments.',
   d:['d-t1','d-t2','d-t3','d-t4'],i2i:['int-natgov'],aum:[],
   sub:[
    n('CERF','UN Central Emergency Response Fund; rapid-response humanitarian capital.','https://cerf.un.org',[{t:'Annual disbursements',v:'~$700M',y:2023}],'UN member states','Track for rapid post-disaster displacement response funding.',null,['Reception'],{url:'https://cerf.un.org/what-we-do/allocation-reports',label:'CERF Allocation Reports 2024'}),
    n('UN Migration MPTF','Dedicated multi-partner trust fund for migration programming.','https://mptf.undp.org',[{t:'Capitalisation',v:'~$50M',y:2023}],'UN member state donors','Direct engagement target given explicit migration mandate.',null,['Reception','Pathways'],{url:'https://migrationnetwork.un.org/mptf',label:'UN Migration MPTF (migrationnetwork.un.org/mptf)'}),
    n('IOM Climate Catalytic Fund (CCF)','IOM-administered fund with its own Selection Committee making independent allocation decisions for community-level climate mobility projects. Part of broader GCMF initiative. Pilot stage: $5K-$25K grants, currently Indonesia, Philippines, Fiji.','https://www.iom.int',[],'EU (pilot funding), other donors','Engage IOM on CCF and broader GCMF architecture — key structural precedent for UMFF.',null,['Climate migration','Reception'],{url:'https://www.environmentalmigration.iom.int',label:'IOM Climate Mobility Innovation Lab (environmentalmigration.iom.int)'}),
-   n('GCCM Communities Climate Action Fund (CCAF)','GCoM-administered grants for community-level climate action. Up to $100K per grant. Targets community/local project implementation.','https://www.globalcovenantofmayors.org',[{t:'Per grant',v:'Up to $100K',y:2023}],'Bilateral and philanthropic donors','Direct engagement target — community/local project focus aligned with MMC subnational mission.',null,['Climate migration','Reception'],{url:'https://www.climatemobility.org',label:'GCCM Communities C-CAF (climatemobility.org)'})
+   n('GCCM Communities Climate Action Fund (CCAF)','GCoM-administered grants for community-level climate action. Up to $100K per grant. Targets community/local project implementation.','https://www.globalcovenantofmayors.org',[{t:'Per grant',v:'Up to $100K',y:2023}],'Bilateral and philanthropic donors','Direct engagement target — community/local project focus aligned with MMC subnational mission.',null,['Climate migration','Reception'],{url:'https://www.climatemobility.org',label:'GCCM Communities C-CAF (climatemobility.org)'}),
+   n('IFRC (International Federation of Red Cross and Red Cross Societies)','Independent international humanitarian organization that receives parametric insurance payouts and deploys humanitarian assistance in climate disaster response. ARC and CCRIF payouts are sometimes channeled through IFRC for community-level deployment alongside national governments.','https://www.ifrc.org',[],'Member national Red Cross and Red Crescent societies','Engage on climate disaster response coordination in MMC member city contexts where CCRIF or ARC payouts are active. IFRC\'s community-level deployment makes it a key last-mile partner for parametric insurance flows.',null,['Climate migration','Reception'],{url:'https://www.ifrc.org/our-work/disasters-climate-and-crises/climate-smart-disaster-risk-management',label:'IFRC Climate Smart Disaster Risk Management'}),
+   n('UNDP','Leads country-level parametric insurance deployments through the Tripartite Agreement Programme with the Insurance Development Forum (IDF) — launching parametric drought and excess rainfall policies for vulnerable farmers and social protection systems in Ecuador, Dominican Republic and others.','https://www.undp.org',[],'UN member states, IDF, bilateral donors','Engage on UNDP-IDF Tripartite Programme for adaptive social protection in MMC member country contexts. UNDP\'s social protection framing is directly relevant to displaced and migrant-hosting communities.',null,['Climate migration','Reception','Economic inclusion'],{url:'https://www.preventionweb.net/news/ecuador-contracts-first-parametric-insurance-climate-vulnerable-farmers-germany-undp-isf-and',label:'UNDP Parametric Insurance / IDF Tripartite Programme'}),
+   n('UNCDF (Parametric Insurance)','Co-manages the Pacific Insurance and Climate Adaptation Programme (PICAP) with ILO, introducing climate-related parametric insurance products across eight Pacific Island nations — among the most climate-displacement-exposed communities globally.','https://www.uncdf.org/pacific-insurance-and-climate-adaptation-programme',[],'Pacific Island governments, bilateral donors, ILO','Engage on PICAP as a model for parametric insurance in climate-displacement hotspots.',null,['Climate migration','Reception'],{url:'https://www.uncdf.org/pacific-insurance-and-climate-adaptation-programme',label:'UNCDF PICAP Programme'}),
+   n('ILO (International Labour Organization)','Collaborates with UNCDF under PICAP to expand inclusive climate risk insurance and financial protection at community and household level across eight Pacific Island nations. Focuses on protecting livelihoods and labor market resilience against climate shocks.','https://www.ilo.org',[],'ILO member states, UNCDF, bilateral donors','Engage alongside UNCDF on PICAP expansion and inclusive climate risk insurance for displaced and climate-vulnerable worker populations.',null,['Climate migration','Economic inclusion'],{url:'https://www.ilo.org/resource/news/ilo-and-uncdf-collaborate-grow-parametric-insurance-pacific',label:'ILO-UNCDF PICAP Collaboration'}),
+   n('WFP (World Food Programme)','Designs and scales localized parametric microinsurance programs — including in Guatemala — to protect food-insecure and climate-vulnerable communities against weather shocks. WFP\'s parametric insurance work directly targets populations most exposed to climate displacement drivers.','https://www.wfp.org',[],'UN member states, bilateral donors','Engage on WFP parametric microinsurance programming in MMC member city contexts where climate-driven food insecurity intersects with displacement risk.',null,['Climate migration','Reception','Health'],{url:'https://www.wfp.org/publications/parametric-microinsurance-key-tool-achieve-resilience-guatemala-2022',label:'WFP Parametric Microinsurance Guatemala 2022'}),
+   n('UNDRR (UN Office for Disaster Risk Reduction)','Partners on pilot projects utilizing anticipatory action parametric schemes for extreme weather preparedness, including innovative parametric insurance schemes in Fiji. Bridges disaster risk reduction frameworks with parametric finance instruments.','https://www.undrr.org',[],'UN member states, bilateral donors','Engage on anticipatory action and parametric scheme pilots in climate-displacement-exposed member city contexts, particularly Pacific and SIDS geographies.',null,['Climate migration','Reception'],{url:'https://www.undrr.org/implementing-sendai-framework/sendai-framework-action/anticipatory-action',label:'UNDRR Anticipatory Action'})
   ]}
 ];
 
@@ -569,6 +575,27 @@ function init(){
     c.int.forEach(function(iid){
       var iNode=findNode(iid,'int');
       var b1=ncbox(iid);if(!b1)return;
+      // When an intermediary is selected, only draw destination lines FROM the clicked node
+      // — not from other intermediaries pulled into c.int via i2i chains
+      if(atype==='int'&&iid!==act){
+        // Still draw i2i dashed arcs that point TO the clicked node
+        if(iNode.i2i){
+          iNode.i2i.forEach(function(targetId){
+            if(targetId!==act)return;
+            if(c.int.indexOf(targetId)<0)return;
+            var b2=ncbox(targetId);if(!b2)return;
+            var midY=Math.min(b1.top,b2.top)-22;
+            ctx.beginPath();ctx.moveTo(b1.cx,b1.top);
+            ctx.bezierCurveTo(b1.cx,midY,b2.cx,midY,b2.cx,b2.top);
+            ctx.strokeStyle=iNode.color;ctx.lineWidth=2.5;ctx.globalAlpha=0.55;
+            ctx.setLineDash([6,4]);ctx.stroke();ctx.setLineDash([]);ctx.globalAlpha=1;
+            var ax=b2.cx,ay=b2.top,hs=10;
+            ctx.beginPath();ctx.moveTo(ax,ay);ctx.lineTo(ax-hs,ay-hs*1.4);ctx.lineTo(ax+hs,ay-hs*1.4);
+            ctx.closePath();ctx.fillStyle=iNode.color;ctx.globalAlpha=0.65;ctx.fill();ctx.globalAlpha=1;
+          });
+        }
+        return; // skip destination lines for non-clicked intermediaries
+      }
       iNode.d.forEach(function(did){
         if(c.d.indexOf(did)<0)return;
         var b2=ncbox(did);if(!b2)return;
